@@ -1,0 +1,27 @@
+{
+  "add books dialog dir": "/home/zaiquiri/Documents/Calibre Library/Guy Debord",
+  "add books dialog dir-last-used-filter-spec-all-files": false,
+  "catalogs_to_be_synced": {
+    "__class__": "set",
+    "__value__": []
+  },
+  "choose library location": "/home/zaiquiri/Documents/Calibre Library",
+  "recursive book import root dir dialog": "/home/zaiquiri/Documents/Calibre Library",
+  "save to disk dialog": "/home/zaiquiri/Documents/Calibre Library",
+  "sort_history": [
+    [
+      "ondevice",
+      false
+    ],
+    [
+      "timestamp",
+      false
+    ],
+    [
+      "timestamp",
+      false
+    ]
+  ],
+  "welcome_wizard_device": "kindle_pw",
+  "welcome_wizard_was_run": true
+}

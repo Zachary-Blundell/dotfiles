@@ -1,0 +1,328 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;   go to https://github.com/polybar/polybar
+;
+;==========================================================
+
+[colors]
+ base = #1e1e2e
+ mantle = #181825
+ crust = #11111b
+
+ text = #cdd6f4
+ subtext0 = #a6adc8
+ subtext1 = #bac2de
+
+ surface0 = #313244
+ surface1 = #45475a
+ surface2 = #585b70
+ 
+ overlay0 = #6c7086
+ overlay1 = #7f849c
+ overlay2 = #9399b2
+
+ blue = #89b4fa
+ lavender = #b4befe
+ sapphire = #74c7ec
+ sky = #89dceb
+ teal = #94e2d5
+ green = #a6e3a1
+ yellow = #f9e2af
+ peach = #fab387
+ maroon = #eba0ac
+ red = #f38ba8
+ mauve = #cba6f7
+ pink = #f5c2e7
+ flamingo = #f2cdcd
+ rosewater = #f5e0dc
+
+ darkBlue = #1e66f5
+ darkLavender = #7287fd
+ darkSapphire = #209fb5
+ darkSky = #04a5e5
+ darkTeal = #179299
+ darkGreen = #40a02b
+ darkYellow = #df8e1d
+ darkPeach = #fe640b
+ darkMaroon = #e64553
+ darkRed = #d20f39
+ darkMauve = #8839ef
+ darkPink = #ea76cb
+ darkFlamingo = #dd7878
+ darkRosewater = #dc8a78
+
+ transparent = #FF00000
+
+[colors]
+;background = ${xrdb:color0:#222}
+background = #000
+background-alt = #444
+;foreground = ${xrdb:color7:#222}
+foreground = #dfdfdf
+foreground-alt = ${colors.teal}
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+
+[bar/bar1]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 27
+;offset-x = 1%
+;offset-y = 1%
+;radius = 6.0
+fixed-center = true
+
+background = ${colors.base}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 4
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = "ProFontWindows NF:size=12;1"
+font-1 = "ProFontWindows NF:size=12;1"
+font-2 = "ProFontWindows NF:size=12;1"
+
+modules-left = i3 
+modules-center = date 
+; modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-right = music pulseaudio xkeyboard memory cpu battery temperature 
+
+tray-background = ${colors.darkLavender}
+tray-position = right
+tray-padding = 10
+tray-maxsize = 20
+tray-scale = 1.0
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format = <label-layout> <label-indicator>
+format-spacing = 0
+
+; Available tokens:
+;   %layout%
+;   %name%
+;   %number%
+;   %icon%
+;   %variant% (New in version 3.6.0)
+label-layout = %icon% 
+label-layout-foreground = ${colors.text}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-foreground = ${colors.base}
+label-indicator-background = ${colors.red}
+
+layout-icon-0 = us;US󰌌 
+layout-icon-0-foreground = ${colors.red}
+layout-icon-1 = fr;FR󰌌 
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+;pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.base}
+
+; focused = Active workspace on focused monitor
+label-focused = %index% %icon%
+label-focused-background = ${colors.crust}
+label-focused-foreground = ${colors.darkLavender}
+label-focused-underline= ${colors.darkLavender}
+label-focused-padding = 2
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index% %icon%
+label-unfocused-padding = 2
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index% %icon%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%%icon%
+label-urgent-background = ${colors.yellow}
+label-urgent-foreground = ${colors.base}
+label-urgent-padding = 2
+
+; Separator in between workspaces
+; label-separator = |
+
+ws-icon-0 = 1;󰖟
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;󰒱
+ws-icon-4 = 5;󰙯
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+ws-icon-default = 󱢇
+
+[module/mpd]
+type = internal/mpd
+format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.text}
+label = %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix-foreground = ${colors.text}
+label = %percentage_used%%
+
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL %percentage%%
+label-volume-foreground = ${colors.text}
+
+label-muted = 󰝟 Muted
+label-muted-foreground = ${colors.red}
+
+bar-volume-width = 10
+bar-volume-foreground-0 = ${colors.green} 
+bar-volume-foreground-1 = ${colors.green} 
+bar-volume-foreground-2 = ${colors.green} 
+bar-volume-foreground-3 = ${colors.green} 
+bar-volume-foreground-4 = ${colors.green} 
+bar-volume-foreground-5 = ${colors.peach} 
+bar-volume-foreground-6 = ${colors.red} 
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-fill-foreground = 
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.text}
+
+[module/battery]
+type = internal/battery
+
+; Use the following command to list batteries and adapters:
+; ls -1 /sys/class/power_supply/
+battery = BAT1
+adapter = ACAD
+
+; DISCHARGING 
+format-discharging = <label-discharging> <ramp-capacity>
+label-discharging = %percentage%%
+label-discharging-foreground = ${colors.text}
+ramp-capacity-foreground = ${colors.text}
+
+; CHARGING 
+format-charging = <label-charging>
+label-charging = %percentage%% 󰂄 
+label-charging-foreground = ${colors.text}
+
+; FULL
+full-at = 99
+format-full = <label-full>
+label-full = %percentage%% 󰂅
+label-full-foreground = ${colors.yellow}
+
+; LOW
+low-at = 10
+format-low = <label-low> <animation-low>
+label-low-foreground = ${colors.red}
+animation-low-foreground = ${colors.red}
+label-low = %percentage%% 
+animation-low-0 = 󰂃
+animation-low-1 = 󰂎
+animation-low-framerate = 300
+
+ramp-capacity-0 = 󰂎
+ramp-capacity-1 = 󰁺
+ramp-capacity-2 = 󰁻
+ramp-capacity-3 = 󰁼
+ramp-capacity-4 = 󰁽
+ramp-capacity-5 = 󰁾
+ramp-capacity-6 = 󰁿
+ramp-capacity-7 = 󰂀
+ramp-capacity-8 = 󰂁
+ramp-capacity-9 = 󰂂
+
+poll-interval = 5
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = "%m-%d"
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix = 
+format-prefix-foreground = ${colors.text}
+
+label = 󰸘 %date%  %time% 
+label-foreground = ${colors.blue}
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
