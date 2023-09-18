@@ -16,7 +16,7 @@
 		"children": [
 			{
 				"key": "sideBar",
-				"width": 250,
+				"width": 40,
 				"visible": true
 			},
 			{
