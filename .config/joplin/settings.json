@@ -1,0 +1,9 @@
+{
+	"$schema": "https://joplinapp.org/schema/settings.json",
+	"locale": "en_US",
+	"api.token": "afc82684e3d6bb2377ac5f0d5bba3b2d1d51121f5f838e0df60655f286fbec3818c399b082e3ecf7c75c1616fa39fe213c7f5bee7588c89e4eee9f00ecdf34e0",
+	"markdown.plugin.softbreaks": false,
+	"markdown.plugin.typographer": false,
+	"sync.target": 3,
+	"editor": "lvim"
+}
