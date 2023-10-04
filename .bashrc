@@ -497,6 +497,13 @@ lazyg() {
 	git push
 }
 
+##Git config
+alias cons='config status'
+alias cond='config diff'
+alias cona='config add'
+alias conc='config commit -m '
+alias conp='config push'
+
 alias lookingglass="~/looking-glass-B5.0.1/client/build/looking-glass-client -F"
 #######################################################
 # Set the ultimate amazing command prompt
