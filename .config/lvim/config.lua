@@ -20,6 +20,7 @@ lvim.plugins = {
         "iamcco/markdown-preview.nvim",
         config = function() vim.fn["mkdp#util#install"]() end,
     },
+    {"windwp/nvim-ts-autotag"},
 }
 
 require("zaiquiri.harpoon")
