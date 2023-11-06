@@ -5,10 +5,21 @@ iatest=$(expr index "$-" i)
 # SHORTCUTS
 #######################################################
 #jump to oclock files
-alias oclock='cd ~/Code/oclock/Apothéose/'
+alias oclock='cd ~/Code/oclock/TP/CPProjects/'
 #jump to backend o-gaming files
 alias backend='cd ~/Code/oclock/Apothéose/back-o-gaming/; lvim .' #jump to myProjects file
 alias coding='cd ~/Code/myProjects/'
+alias note='cd ~/Documents/Notebook; lvim .'
+savenotes() {
+    cd ~/Documents/Notebook/
+    echo "Adding all"
+	git add .
+    echo "Commiting Auto Save"
+	git commit -m "Auto Save"
+    echo "Pushing"
+	git push
+    cd "$OLDPWD"
+}
 
 ## Edit Configs
 # Edit this .bashrc file
