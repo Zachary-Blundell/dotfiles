@@ -28,6 +28,8 @@ keymap("n", "<leader> j", "<C-w>j", opts)
 keymap("n", "<leader> k", "<C-w>k", opts)
 keymap("n", "<leader> l", "<C-w>l", opts)
 
+-- keymap("n", "<leader> z", "<A-T>", opts)
+
 -- Keep search terms in the center when searching 
 keymap("n", "n", "nzzzv", opts)
 keymap("n", "N", "Nzzzv", opts)

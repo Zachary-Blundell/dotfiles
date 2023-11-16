@@ -7,8 +7,8 @@
   "contributes": {
     "snippets": [
       {
-        "language": "sql",
-        "path": "./sql.json"
+        "language": "markdown",
+        "path": "./markdown.json"
       }
     ]
   }
