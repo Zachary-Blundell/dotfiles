@@ -13,10 +13,13 @@ let g:LanguageClient_serverCommands = {
     \ 'sql': ['sql-language-server', 'up', '--method', 'stdio'],
     \ }
 ]])
+
 lvim.plugins = {
     { "tpope/vim-fugitive" },
+    { "windwp/nvim-ts-autotag" },
     {
         "iamcco/markdown-preview.nvim",
         config = function() vim.fn["mkdp#util#install"]() end,
+        "catppuccin/nvim", name = "catppuccin", priority = 1000
     },
 }

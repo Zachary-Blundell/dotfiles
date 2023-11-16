@@ -15,9 +15,12 @@ set $alt Mod1
 ### Wallpaper: ###
 # - You need to specify homescreen wallpaper using azote
 set $lockScreenWallpaper /usr/share/wallpapers/garuda-wallpapers/Garuda\ Desert.png
+set $wallpaper ~/Pictures/wallpapers/0272.jpg
+
+exec_always feh --bg-scale $wallpaper
 
 ### Applications: ###
-set $preferredTerminalEmulator /usr/bin/kitty
+set $preferredTerminalEmulator /usr/local/bin/blackbox
 set $preferredBrowser /usr/bin/librewolf
 set $preferredFileManager /usr/bin/thunar
 set $preferredMailClient /usr/bin/geary
@@ -37,6 +40,7 @@ bindsym $super+F4 exec $preferredTextEditor;focus
 
 bindsym $super+F9 exec $preferredScreenCaptureTool
 bindsym Print exec --no-startup-id $preferredScreenCaptureTool
+bindsym shift+Print exec --no-startup-id /usr/bin/flameshot screen
 
 ### Start a Terminal Emulator: ###
 # - You can change the preferredTerminalEmulator variable
