@@ -5,11 +5,10 @@ iatest=$(expr index "$-" i)
 # SHORTCUTS
 #######################################################
 #jump to oclock files
-alias oclock='cd ~/Code/oclock/TP/CPProjects/'
+alias react='cd ~/Code/react/hello/ && lvim .'
 #jump to backend o-gaming files
 alias backend='cd ~/Code/oclock/Apothéose/back-o-gaming/; lvim .' #jump to myProjects file
 alias coding='cd ~/Code/myProjects/'
-alias note='cd ~/Documents/Notebook; lvim .'
 savenotes() {
     cd ~/Documents/Notebook/
     echo "Adding all"
@@ -19,6 +18,11 @@ savenotes() {
     echo "Pushing"
 	git push
     cd "$OLDPWD"
+}
+note(){
+    cd ~/Documents/Notebook/
+    git pull || (echo "Problme pulling from Github" && sleep 5)
+    lvim . && savenotes;
 }
 
 ## Edit Configs
