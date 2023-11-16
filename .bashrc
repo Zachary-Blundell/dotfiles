@@ -168,7 +168,7 @@ alias vif='lvim $(fzf)'
 # cd into the old directory
 alias bd='cd "$OLDPWD"'
 
-# Update and upgrade
+# Update and upgrade Debian
 alias update='sudo apt-get update && sudo apt-get upgrade'
 
 # Remove a directory and all files
