@@ -4,6 +4,9 @@
 -- Discord: https://discord.com/invite/Xb9B4Ny
 require("zaiquiri.options")
 require("zaiquiri.keymaps")
+require("zaiquiri.null_ls")
+require("zaiquiri.catppuccin")
+require("zaiquiri.harpoon")
 
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
@@ -23,8 +26,6 @@ lvim.plugins = {
     {"windwp/nvim-ts-autotag"},
 }
 
-require("zaiquiri.harpoon")
-require("zaiquiri.catppuccin")
 
 
 lvim.colorscheme = 'catppuccin-mocha'
