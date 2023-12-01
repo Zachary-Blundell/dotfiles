@@ -1,3 +1,3 @@
-2023/11/06-10:02:45.269 99d Reusing MANIFEST /home/zaiquiri/.config/ticktick/IndexedDB/file__0.indexeddb.leveldb/MANIFEST-000001
-2023/11/06-10:02:45.269 99d Recovering log #7
-2023/11/06-10:02:45.277 99d Reusing old log /home/zaiquiri/.config/ticktick/IndexedDB/file__0.indexeddb.leveldb/000007.log 
+2023/11/24-13:34:58.249 19ee5 Reusing MANIFEST /home/zaiquiri/.config/ticktick/IndexedDB/file__0.indexeddb.leveldb/MANIFEST-000001
+2023/11/24-13:34:58.250 19ee5 Recovering log #7
+2023/11/24-13:34:58.267 19ee5 Reusing old log /home/zaiquiri/.config/ticktick/IndexedDB/file__0.indexeddb.leveldb/000007.log 

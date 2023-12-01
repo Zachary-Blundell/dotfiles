@@ -7,8 +7,9 @@
 		"pro": true,
 		"teamUser": false,
 		"ds": false,
-		"proEndDate": "2023-11-22T12:20:48.000+0000",
+		"proEndDate": "2023-12-22T12:20:48.000+0000",
 		"userId": "122400954"
 	},
-	"zoomFactor": 1
+	"zoomFactor": 1,
+	"skipVersion": "2.0.0"
 }

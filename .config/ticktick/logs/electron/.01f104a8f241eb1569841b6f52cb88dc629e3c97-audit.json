@@ -6,26 +6,6 @@
     "auditLog": "/home/zaiquiri/.config/ticktick/logs/electron/.01f104a8f241eb1569841b6f52cb88dc629e3c97-audit.json",
     "files": [
         {
-            "date": 1698134501174,
-            "name": "/home/zaiquiri/.config/ticktick/logs/electron/electron-2023-10-24.log",
-            "hash": "7a8097a18f19eb3f60fdcec07e71774f"
-        },
-        {
-            "date": 1698185437531,
-            "name": "/home/zaiquiri/.config/ticktick/logs/electron/electron-2023-10-25.log",
-            "hash": "ad0ae4258f9c640a95ba3a061e39455e"
-        },
-        {
-            "date": 1698656615437,
-            "name": "/home/zaiquiri/.config/ticktick/logs/electron/electron-2023-10-30.log",
-            "hash": "44a22a67f13892eab20faf9139876809"
-        },
-        {
-            "date": 1699009407759,
-            "name": "/home/zaiquiri/.config/ticktick/logs/electron/electron-2023-11-03.log",
-            "hash": "db08ff443f8586ead759a6cd11fd14d8"
-        },
-        {
             "date": 1699092260643,
             "name": "/home/zaiquiri/.config/ticktick/logs/electron/electron-2023-11-04.log",
             "hash": "45e42d91569c0d5ce8f3b76192b7f8d9"
@@ -39,6 +19,26 @@
             "date": 1699261362779,
             "name": "/home/zaiquiri/.config/ticktick/logs/electron/electron-2023-11-06.log",
             "hash": "32f146b0155f19b9fdbf5a0d4330c8e5"
+        },
+        {
+            "date": 1699360203902,
+            "name": "/home/zaiquiri/.config/ticktick/logs/electron/electron-2023-11-07.log",
+            "hash": "3faa5bbb60a1c14fca1395bac283fd66"
+        },
+        {
+            "date": 1699552099795,
+            "name": "/home/zaiquiri/.config/ticktick/logs/electron/electron-2023-11-09.log",
+            "hash": "e6ab28ef26afe8dfc412506dbc7fa41f"
+        },
+        {
+            "date": 1699655495212,
+            "name": "/home/zaiquiri/.config/ticktick/logs/electron/electron-2023-11-10.log",
+            "hash": "35b2906cc8f29e8a69700bb53580c278"
+        },
+        {
+            "date": 1700829294612,
+            "name": "/home/zaiquiri/.config/ticktick/logs/electron/electron-2023-11-24.log",
+            "hash": "f969b819e07b6c93570d66b79c76ccf4"
         }
     ]
 }
