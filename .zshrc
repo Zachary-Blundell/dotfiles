@@ -16,7 +16,7 @@ alias rzsh='source ~/.zshrc' # Reload this .zshrc file
 # Edit hyprland config
 alias ehypr='cd ~/.config/hypr/hyprconfigs/; lvim .; cd "$OLDPWD"' 
 # Edit tmux
-alias etmux='cd ~/.config/tmux/tmux.conf; lvim .; cd "$OLDPWD"' 
+alias etmux='cd ~/.config/tmux/; lvim .; cd "$OLDPWD"' 
 # Edit starship
 alias estar='cd ~/.config/starship.toml; lvim .; cd "$OLDPWD"' 
 # Edit kitty

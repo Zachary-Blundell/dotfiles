@@ -1,0 +1,76 @@
+#!/bin/bash
+
+# Directory containing background images
+DEFAULT_DIR="$HOME/Media/Pictures/wallpapers/Favorites"
+BG_SAVE_FILE="$HOME/.config/hypr/scripts/last_selected_bg.txt"
+
+# Check if the save file exists and contains a valid path
+if [ -f "$BG_SAVE_FILE" ]; then
+  last_selected_location=$(cat "$BG_SAVE_FILE")
+  if [ -f "$last_selected_location" ]; then
+    last_selected_bg="$last_selected_location"
+  fi
+fi
+
+# Does the file exist?
+file_exists() {
+  local file_path="$1"
+  if [ -f "$file_path" ]; then
+    return 0  # File exists
+  else
+    return 1  # File does not exist
+  fi
+}
+
+select_background_image() {
+  local start_file="$1"
+  zenity --file-selection --filename="$start_file" --file-filter='Image files | *.png *.jpg *.jpeg' --title="Select Background Image"
+}
+
+# Parse command-line arguments
+if [ "$#" -eq 1 ] && [ "$1" = "--select" ]; then
+  # if the PREVIOUSLY_SELECTED_BG exists...
+  if file_exists "$last_selected_bg"; then
+    selected_wallpaper=$(select_background_image "$last_selected_bg")
+  else
+    selected_wallpaper=$(select_background_image "$DEFAULT_DIR")
+  fi
+
+    # Check if user selected a background image
+    if [ -z "$selected_wallpaper" ]; then
+      # User canceled or didn't select any image
+      exit 1
+    fi
+
+  elif [ "$#" -eq 0 ]; then
+    # Check if the last selected file exists and contains a valid path
+    if file_exists "$last_selected_bg"; then
+      selected_wallpaper=$last_selected_bg
+    else
+      selected_wallpaper=$(select_background_image "$DEFAULT_DIR")
+    fi
+  else
+    echo "Usage: $0 [--select]" >&2
+    exit 1
+    fi
+
+# Check if user selected a background image
+if [ -z "$selected_wallpaper" ]; then
+  # User canceled or didn't select any image
+  exit 1
+fi
+
+# Save the selected wallpaper path to the last selected file
+echo "$selected_wallpaper" > "$BG_SAVE_FILE"
+
+# Terminate already running swaybg instances
+killall -q swaybg
+
+# Wait until the processes have been shut down
+while pgrep -x swaybg >/dev/null; do sleep 1; done
+
+# Set the selected image as background using swaybg
+swaybg -m fill -i "$selected_wallpaper" &
+
+# Display a notification with the selected wallpaper's path
+notify-send "$selected_wallpaper" &

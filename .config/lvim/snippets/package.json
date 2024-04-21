@@ -1,0 +1,43 @@
+{
+    "name": "nvim-snippets",
+    "author": "zaiquiri",
+    "engines": {
+        "vscode": "^1.11.0"
+    },
+    "contributes": {
+        "snippets": [
+            {
+                "language": "markdown",
+                "path": "./markdown.json"
+            },
+            {
+                "language": "vimwiki",
+                "path": "./markdown.json"
+            },
+            {
+                "language": "javascript",
+                "path": "./snippets-react-native-javascript.json"
+            },
+            {
+                "language": "javascriptreact",
+                "path": "./snippets-react-native-javascript.json"
+            },
+            {
+                "language": "typescript",
+                "path": "./snippets-react-native-typescript.json"
+            },
+            {
+                "language": "dart",
+                "path": "./flutter.json"
+            },
+            {
+                "language": "typescriptreact",
+                "path": "./snippets-react-native-typescript.json"
+            },
+            {
+                "language": "jsx",
+                "path": "./snippets-react-native-javascript.json"
+            }
+        ]
+    }
+}
