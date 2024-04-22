@@ -7,7 +7,11 @@ alias dvcf='cd ~/Code/Defiez-votre-cerveau/'
 alias dvc='cd ~/Code/Defiez-votre-cerveau/dvc/; lvim .'
 alias configs='cd ~/.config/ && lvim .'
 # alias gpt='ollama run llama2-uncensored'
-# alias backup='cd $HOME/Code/my-dotfiles/ && ./backup.sh'
+# backup='cd $HOME/dotfiles/ && git add . && git commit "auto save" && git push'
+backup() {
+  cd $HOME/dotfiles/ && git add . && git commit -m "auto save" && git push;
+  cd "$OLDPWD" 
+}
 
 ## Edit Configs
 # Edit this .zshrc file
@@ -27,7 +31,7 @@ alias ewaybar='cd ~/.config/hypr/waybar/config.ini; lvim .; cd "$OLDPWD"'
 ## Other edits
 # Edit scripts in local bin
 alias escripts='cd ~/.local/bin/; lvim .; cd "$OLDPWD"' 
-alias ebackup='cd ~/Code/my-dotfiles/; lvim .; cd "$OLDPWD"' 
+# alias ebackup='cd ~/Code/my-dotfiles/; lvim .; cd "$OLDPWD"' 
 
 ## Flutter
 alias frun='flutter run'
@@ -61,6 +65,7 @@ lazyg() {
 alias gitpkg='pacman -Q | grep -i "\-git" | wc -l' 
 
 # Change directory aliases
+alias cd='z'
 alias cd..='cd ..'
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -96,7 +101,7 @@ alias vim='lvim'
 alias vi='lvim'
 # alias v='lvim .'
 alias l='lvim .'
-alias sl='sudo lvim'
+# alias sl='sudo lvim'
 # fuzzy find a file and open with lunarvim
 alias lf='lvim $(fzf)'
 
@@ -138,7 +143,7 @@ alias mkdir='mkdir -p'
 alias ps='ps auxf'
 alias ping='ping -c 10'
 alias less='less -R'
-alias cls='clear'
+alias c='clear'
 alias apt-get='sudo apt-get'
 alias multitail='multitail --no-repeat -c'
 alias freshclam='sudo freshclam'
@@ -903,6 +908,7 @@ alias pamac-unlock="sudo rm /var/tmp/pamac/dbs/db.lock"
 
 ## Starship
 eval "$(starship init zsh)"
-
-# WAYLAND_DISPLAY=0 firefox
+## Zoxide
+eval "$(zoxide init zsh)"
+# WAYLAND_DISPLAY=0 android-studio
 # neofetch
