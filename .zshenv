@@ -5,6 +5,7 @@ export VISUAL=lvim
 export HISTCONTROL=ignoreboth:erasedups
 export PAGER='most'
 
+# SSH
 if [ ! -S ~/.ssh/ssh_auth_sock ]; then
   eval `ssh-agent`
   # ssh-add ~/.ssh/github_ed25519
@@ -13,7 +14,9 @@ fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 ssh-add -l > /dev/null || ssh-add
 
+# flutter 
 export PATH=/usr/bin/flutter/bin:$PATH
+# Android Studio
 export PATH=/usr/bin/android-studio/bin:$PATH
 
 
