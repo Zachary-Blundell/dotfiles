@@ -1,3 +1,7 @@
+# SSH
+# source ~/.ssh-find-agent/ssh-find-agent.sh
+emulate ksh -c "source ~/.ssh-find-agent/ssh-find-agent.sh"
+ssh-add -l >&/dev/null || ssh-find-agent -a || eval $(ssh-agent) > /dev/null
 
 export EDITOR=lvim
 export VISUAL=lvim
@@ -5,23 +9,25 @@ export VISUAL=lvim
 export HISTCONTROL=ignoreboth:erasedups
 export PAGER='most'
 
-# SSH
-if [ ! -S ~/.ssh/ssh_auth_sock ]; then
-  eval `ssh-agent`
-  # ssh-add ~/.ssh/github_ed25519
-  ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
-fi
-export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
-ssh-add -l > /dev/null || ssh-add
-
 # flutter 
 export PATH=/usr/bin/flutter/bin:$PATH
 # Android Studio
 export PATH=/usr/bin/android-studio/bin:$PATH
+export PATH=/snap/bin:$PATH
 
+if [ -d "$HOME/.bin" ] ; then 
+  export PATH=$HOME/.bin:$PATH
+fi
+
+if [ -d "$HOME/.local/bin" ] ; then 
+  export PATH=$HOME/.local/bin:$PATH
+fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export XAUTHORITY=/home/zaiquiri/.Xauthority
+
+# export DISPLAY=:0
+

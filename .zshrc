@@ -8,14 +8,19 @@ alias dvc='cd ~/Code/Defiez-votre-cerveau/dvc/; lvim .'
 alias configs='cd ~/.config/ && lvim .'
 # alias gpt='ollama run llama2-uncensored'
 # backup='cd $HOME/dotfiles/ && git add . && git commit "auto save" && git push'
-backup() {
+backupDots() {
   cd $HOME/dotfiles/ && git add . && git commit -m "auto save" && git push;
+  cd "$OLDPWD" 
+}
+restoreDots() {
+  cd $HOME/dotfiles && stow .
   cd "$OLDPWD" 
 }
 
 ## Edit Configs
 # Edit this .zshrc file
 alias ezsh='cd; lvim ~/.zshrc; cd "$OLDPWD"' 
+alias ez='cd; $EDITOR ~/.zshrc; cd "$OLDPWD"'
 alias rzsh='source ~/.zshrc' # Reload this .zshrc file
 # Edit hyprland config
 alias ehypr='cd ~/.config/hypr/hyprconfigs/; lvim .; cd "$OLDPWD"' 
@@ -129,7 +134,7 @@ alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
 
 # Replace ls with exa
 alias ls='exa --color=always --group-directories-first --icons' # preferred listing
-alias la='exa -a --color=always --group-directories-first --icons'  # all files and dirs
+alias la='exa -la --color=always --group-directories-first --icons'  # all files and dirs
 alias ll='exa -l --color=always --group-directories-first --icons'  # long format
 alias lt='exa -aT --color=always --group-directories-first --icons' # tree listing
 alias l.='exa -ald --color=always --group-directories-first --icons .*' # show only dotfiles
@@ -528,26 +533,26 @@ precmd_functions+=(set_win_title)
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+## Plugins
+if [ -d ~/.config/zsh/plugins ]; then
+  # Use syntax highlighting
+  source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-####   ARCOLINUX SETTINGS   ####
+  # Use autosuggestion
+  source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-if [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  # Use history substring search
+  source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 fi
+# Use fzf
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
 
 #PS1='[\u@\h \W]\$ '
-
-if [ -d "$HOME/.bin" ] ;
-  then PATH="$HOME/.bin:$PATH"
-fi
-
-if [ -d "$HOME/.local/bin" ] ;
-  then PATH="$HOME/.local/bin:$PATH"
-fi
 
 ### ALIASES ###
 
@@ -778,7 +783,6 @@ alias ehosts="sudo $EDITOR /etc/hosts"
 alias ehostname="sudo $EDITOR /etc/hostname"
 alias eresolv="sudo $EDITOR /etc/resolv.conf"
 alias eb="$EDITOR ~/.bashrc"
-alias ez="$EDITOR ~/.zshrc"
 alias ef="$EDITOR ~/.config/fish/config.fish"
 alias eneofetch="$EDITOR ~/.config/neofetch/config.conf"
 alias eplymouth="sudo $EDITOR /etc/plymouth/plymouthd.conf"
@@ -910,5 +914,6 @@ alias pamac-unlock="sudo rm /var/tmp/pamac/dbs/db.lock"
 eval "$(starship init zsh)"
 ## Zoxide
 eval "$(zoxide init zsh)"
-# WAYLAND_DISPLAY=0 android-studio
-# neofetch
+## Neofetch
+# neofetch | lolcat
+neofetch 
