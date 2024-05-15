@@ -43,6 +43,10 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<C-j>", ":bd<CR>", opts)
 
+-- toggle wrap
+keymap("n", "<A-w>", ":set wrap! <CR>", opts)
+
+-- Rename
 keymap("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)
 
 --  Timestamp
