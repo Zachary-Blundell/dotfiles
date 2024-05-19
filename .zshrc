@@ -2,9 +2,9 @@
 # ALIASES
 #######################################################
 ## Shortcuts
-alias coding='cd ~/Code/myProjects/'
-alias dvcf='cd ~/Code/Defiez-votre-cerveau/'
-alias dvc='cd ~/Code/Defiez-votre-cerveau/dvc/; lvim .'
+# alias coding='cd ~/Code/myProjects/'
+alias coding='cd ~/Code/'
+alias dvc='cd ~/Code/dvc/ && lvim .'
 alias configs='cd ~/.config/ && lvim .'
 # alias gpt='ollama run llama2-uncensored'
 # backup='cd $HOME/dotfiles/ && git add . && git commit "auto save" && git push'
@@ -29,7 +29,7 @@ alias etmux='cd ~/.config/tmux/; lvim .; cd "$OLDPWD"'
 # Edit starship
 alias estar='cd ~/.config/starship.toml; lvim .; cd "$OLDPWD"' 
 # Edit kitty
-alias ekitty='cd ~/.config/kitty/kitty.conf; lvim .; cd "$OLDPWD"' 
+alias ekitty='cd ~/.config/kitty/; lvim kitty.conf ; cd "$OLDPWD"' 
 # Edit waybar config
 alias ewaybar='cd ~/.config/hypr/waybar/config.ini; lvim .; cd "$OLDPWD"' 
 
@@ -46,6 +46,7 @@ alias fbuild='flutter build'
 alias fup='flutter pub upgrade'
 alias fdoc='flutter doctor'
 alias fclean='flutter clean'
+alias frunw='flutter run -d chrome'
 
 ## Git
 alias gk='git clone'

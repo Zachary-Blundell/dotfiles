@@ -1,5 +1,5 @@
 # SSH
-# source ~/.ssh-find-agent/ssh-find-agent.sh
+source ~/.ssh-find-agent/ssh-find-agent.sh
 emulate ksh -c "source ~/.ssh-find-agent/ssh-find-agent.sh"
 ssh-add -l >&/dev/null || ssh-find-agent -a || eval $(ssh-agent) > /dev/null
 
