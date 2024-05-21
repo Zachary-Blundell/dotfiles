@@ -1,6 +1,5 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.coding.luasnip",
     "lazyvim.plugins.extras.editor.leap",
     "lazyvim.plugins.extras.lang.markdown",
     "lazyvim.plugins.extras.util.mini-hipatterns"
