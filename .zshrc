@@ -5,8 +5,8 @@
 alias bibites='cd ~/bibites/ && ./The\ Bibites.x86_64 -force-vulkan &'
 alias coding='cd ~/Code/myProjects/'
 alias dvcf='cd ~/Code/Defiez-votre-cerveau/'
-alias dvc='cd ~/Code/Defiez-votre-cerveau/dvc/; lvim .'
-alias configs='cd ~/.config/ && lvim .'
+alias dvc='cd ~/Code/Defiez-votre-cerveau/dvc/; nvim .'
+alias configs='cd ~/.config/ && nvim .'
 # alias gpt='ollama run llama2-uncensored'
 # backup='cd $HOME/dotfiles/ && git add . && git commit "auto save" && git push'
 backupDots() {
@@ -20,24 +20,24 @@ restoreDots() {
 
 ## Edit Configs
 # Edit this .zshrc file
-alias ezsh='cd; lvim ~/.zshrc; cd "$OLDPWD"' 
+alias ezsh='cd; nvim ~/.zshrc; cd "$OLDPWD"' 
 alias ez='cd; $EDITOR ~/.zshrc; cd "$OLDPWD"'
 alias rzsh='source ~/.zshrc' # Reload this .zshrc file
 # Edit hyprland config
-alias ehypr='cd ~/.config/hypr/hyprconfigs/; lvim .; cd "$OLDPWD"' 
+alias ehypr='cd ~/.config/hypr/hyprconfigs/; nvim .; cd "$OLDPWD"' 
 # Edit tmux
-alias etmux='cd ~/.config/tmux/; lvim .; cd "$OLDPWD"' 
+alias etmux='cd ~/.config/tmux/; nvim .; cd "$OLDPWD"' 
 # Edit starship
-alias estar='cd ~/.config/starship.toml; lvim .; cd "$OLDPWD"' 
+alias estar='cd ~/.config/starship.toml; nvim .; cd "$OLDPWD"' 
 # Edit kitty
-alias ekitty='cd ~/.config/kitty/kitty.conf; lvim .; cd "$OLDPWD"' 
+alias ekitty='cd ~/.config/kitty/kitty.conf; nvim .; cd "$OLDPWD"' 
 # Edit waybar config
-alias ewaybar='cd ~/.config/hypr/waybar/config.ini; lvim .; cd "$OLDPWD"' 
+alias ewaybar='cd ~/.config/hypr/waybar/config.ini; nvim .; cd "$OLDPWD"' 
 
 ## Other edits
 # Edit scripts in local bin
-alias escripts='cd ~/.local/bin/; lvim .; cd "$OLDPWD"' 
-# alias ebackup='cd ~/Code/my-dotfiles/; lvim .; cd "$OLDPWD"' 
+alias escripts='cd ~/.local/bin/; nvim .; cd "$OLDPWD"' 
+# alias ebackup='cd ~/Code/my-dotfiles/; nvim .; cd "$OLDPWD"' 
 
 ## Flutter
 alias frun='flutter run'
@@ -145,13 +145,14 @@ alias 755='chmod -R 755'
 alias 777='chmod -R 777'
 
 # Editor stuff
-alias vim='lvim'
-alias vi='lvim'
-# alias v='lvim .'
-alias l='lvim .'
-# alias sl='sudo lvim'
+alias vim='nvim'
+alias vi='nvim'
+# alias v='nvim .'
+alias l='nvim .'
+alias n='nvim .'
+alias sn='sudo nvim'
 # fuzzy find a file and open with lunarvim
-alias lf='lvim $(fzf)'
+alias nf='nvim $(fzf)'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
