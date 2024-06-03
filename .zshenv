@@ -5,6 +5,7 @@ ssh-add -l >&/dev/null || ssh-find-agent -a || eval $(ssh-agent) > /dev/null
 
 export EDITOR=lvim
 export VISUAL=lvim
+export CHROME_EXECUTABLE=/usr/bin/chromium
 
 export HISTCONTROL=ignoreboth:erasedups
 export PAGER='most'

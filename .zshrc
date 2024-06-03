@@ -47,6 +47,8 @@ alias fbuild='flutter build'
 alias fup='flutter pub upgrade'
 alias fdoc='flutter doctor'
 alias fclean='flutter clean'
+alias fgen='flutter gen-l10n'
+alias fweb='flutter run -d chrome'
 ###-begin-flutter-completion-###
 if type complete &>/dev/null; then
   __flutter_completion() {
