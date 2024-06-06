@@ -605,6 +605,7 @@ source /usr/share/fzf/completion.zsh
 #pacman
 alias sps='sudo pacman -S'
 alias spr='sudo pacman -R'
+alias spra='sudo pacman -Rns'
 alias sprs='sudo pacman -Rs'
 alias sprdd='sudo pacman -Rdd'
 alias spqo='sudo pacman -Qo'
