@@ -37,7 +37,7 @@ merge_files() {
 		exit 1
 	fi
 
-	echo "Merging .zshrc and nvim folder from $target_branch..."
+	echo "Syncing .zshrc and nvim folder from $target_branch..."
 	git fetch origin
 	git checkout $target_branch -- .zshrc
 	git checkout $target_branch -- .config/nvim
