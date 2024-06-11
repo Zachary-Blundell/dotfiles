@@ -1,59 +1,56 @@
 #!/bin/bash
-# Script for starting services and setting the necessary setting for the jellyfin server 
+# Script for starting services and setting the necessary setting for the jellyfin server
 
 # This starts and stops the server services
-function start_server
-{
-  sudo systemctl start jellyfin.service
-  sudo systemctl start cloudflared.service
+function start_server {
+	sudo systemctl start jellyfin.service
+	sudo systemctl start cloudflared.service
 }
-function stop_server
-{
-  sudo systemctl stop jellyfin.service
-  sudo systemctl stop cloudflared.service
+function stop_server {
+	sudo systemctl stop jellyfin.service
+	sudo systemctl stop cloudflared.service
 }
 
-# This is changes suspend options on laptop lid close suspend key press 
-function suspend_deactivated
-{
-  sudo sed -i 's/\(HandleSuspendKey\)=suspend/\1=ignore/' /etc/systemd/logind.conf
-  sudo sed -i 's/\(HandleLidSwitch\)=suspend/\1=ignore/' /etc/systemd/logind.conf
-  sudo sed -i 's/\(HandleLidSwitchExternalPower\)=suspend/\1=ignore/' /etc/systemd/logind.conf
-  sudo systemctl reload systemd-logind.service
+# This is changes suspend options on laptop lid close suspend key press
+function suspend_deactivated {
+	sudo sed -i 's/\(HandleSuspendKey\)=suspend/\1=ignore/' /etc/systemd/logind.conf
+	sudo sed -i 's/\(HandleLidSwitch\)=suspend/\1=ignore/' /etc/systemd/logind.conf
+	sudo sed -i 's/\(HandleLidSwitchExternalPower\)=suspend/\1=ignore/' /etc/systemd/logind.conf
+	sudo systemctl reload systemd-logind.service
 }
-function suspend_activated
-{
-  sudo sed -i 's/\(HandleSuspendKey\)=ignore/\1=suspend/' /etc/systemd/logind.conf
-  sudo sed -i 's/\(HandleLidSwitch\)=ignore/\1=suspend/' /etc/systemd/logind.conf
-  sudo sed -i 's/\(HandleLidSwitchExternalPower\)=ignore/\1=suspend/' /etc/systemd/logind.conf
-  sudo systemctl reload systemd-logind.service
+function suspend_activated {
+	sudo sed -i 's/\(HandleSuspendKey\)=ignore/\1=suspend/' /etc/systemd/logind.conf
+	sudo sed -i 's/\(HandleLidSwitch\)=ignore/\1=suspend/' /etc/systemd/logind.conf
+	sudo sed -i 's/\(HandleLidSwitchExternalPower\)=ignore/\1=suspend/' /etc/systemd/logind.conf
+	sudo systemctl reload systemd-logind.service
 }
 
-function help
-{
-  echo "-s | start to start and -x | stop to stop"
+function help {
+	echo "-s | start to start and -x | stop to stop"
 }
 
 while [ "$1" != "" ]; do
-    case $1 in
-        -s | s | start )
-            # start_server
-            suspend_deactivated
-            exit 
-            ;;
-        -x | x | stop )
-            stop_server
-            suspend_activated
-            exit 
-            ;;
-        -h | --help | help )
-            help
-            exit 
-            ;;
-        * )
-            help
-            exit 
-    esac
-    shift
+	case $1 in
+	-s | s | start)
+		crytptdrive -m
+		start_server
+		suspend_deactivated
+		exit
+		;;
+	-x | x | stop)
+		stop_server
+		suspend_activated
+		exit
+		;;
+	-h | --help | help)
+		help
+		exit
+		;;
+	*)
+		help
+		exit
+		;;
+	esac
+	shift
 done
 help

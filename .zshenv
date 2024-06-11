@@ -1,9 +1,9 @@
 # SSH
 source ~/.ssh-find-agent/ssh-find-agent.sh
 emulate ksh -c "source ~/.ssh-find-agent/ssh-find-agent.sh"
-# ssh-add -l >&/dev/null || ssh-find-agent -a || eval $(ssh-agent) > /dev/null
-ssh-find-agent -a || eval $(ssh-agent) > /dev/null
-
+ssh-add -l >&/dev/null || ssh-find-agent -a || eval $(ssh-agent) > /dev/null
+# ssh-find-agent -a || eval $(ssh-agent) > /dev/null
+export QT_QPA_PLATFORMTHEME=qt5ct
 export EDITOR=lvim
 export VISUAL=lvim
 

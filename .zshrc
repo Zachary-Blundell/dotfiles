@@ -24,6 +24,8 @@ alias rzsh='source ~/.zshrc' # Reload this .zshrc file
 alias ehypr='cd ~/.config/hypr/hyprconfigs/; nvim .; cd "$OLDPWD"' 
 # Edit tmux
 alias etmux='cd ~/.config/tmux/; nvim tmux.conf; cd "$OLDPWD"' 
+# Edit zellij
+alias ezellij='cd ~/.config/zellij/; nvim config.kdl; cd "$OLDPWD"' 
 # Edit starship
 alias estar='cd ~/.config/; nvim starship.toml; cd "$OLDPWD"' 
 # Edit kitty
@@ -960,4 +962,5 @@ elif type compctl &>/dev/null; then
   compctl -K __flutter_completion flutter
 fi
 
+ssh-add -l >&/dev/null || ssh-find-agent -a || eval $(ssh-agent) > /dev/null
 ###-end-flutter-completion-###
