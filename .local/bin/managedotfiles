@@ -46,6 +46,9 @@ merge_files() {
 
 	cd "$OLDPWD"
 }
+goto_dotfiles() {
+	cd ~/dotfiles/
+}
 
 # Main menu
 while true; do
@@ -67,6 +70,9 @@ while true; do
 		merge_files
 		;;
 	4)
+		goto_dotfiles
+		;;
+	5)
 		echo "Exiting..."
 		break
 		;;
