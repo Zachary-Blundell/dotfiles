@@ -1,0 +1,83 @@
+#!/bin/bash
+
+# Function to push all changes
+push_changes() {
+	echo "Pushing all changes to the repository..."
+	cd ~/dotfiles
+	echo "Adding all"
+	git add .
+	echo "Commiting Auto Save"
+	git commit -m "Backup dotfiles from mamagement script"
+	echo "Pushing"
+	git push
+	cd "$OLDPWD"
+}
+
+# Function to use GNU Stow to stow all dotfiles
+stow_dotfiles() {
+	echo "Stowing dotfiles..."
+	cd ~/dotfiles
+	stow .
+	cd "$OLDPWD"
+}
+
+# Function to merge .zshrc and nvim folder from another branch
+merge_files() {
+	# detect the right branch to sync with
+	current_branch=$(git symbolic-ref --short HEAD)
+
+	if [ "$current_branch" == "Arch-Portal" ]; then
+		target_branch="Quantum-Nexus"
+	elif [ "$current_branch" == "Quantum-Nexus" ]; then
+		target_branch="Arch-Portal"
+	else
+		echo "You are not on Arch-Portal or Quantum-Nexus branch. Exiting..."
+		exit 1
+	fi
+
+	echo "Merging .zshrc and nvim folder from $target_branch..."
+	git fetch origin
+	git checkout $target_branch -- .zshrc
+	git checkout $target_branch -- .config/zellij
+	git checkout $target_branch -- .config/nvim
+	git add .zshrc .config/nvim
+	git commit -m "Merged .zshrc and nvim from $target_branch"
+}
+# merge_files() {
+# 	read -p "Enter the branch name to merge from: " branch
+# 	echo "Merging .zshrc and nvim folder from $branch..."
+# 	git fetch origin
+# 	git checkout $branch -- .zshrc
+# 	git checkout $branch -- .config/nvim
+# 	git add .zshrc .config/nvim
+# 	git commit -m "Merged .zshrc and nvim from $branch"
+# }
+
+# Main menu
+while true; do
+	echo "Select an option:"
+	echo "1) Push all changes to the repository"
+	echo "2) Stow all dotfiles"
+	echo "3) Merge .zshrc and nvim folder from other branch"
+	echo "4) Exit"
+	read -p "Enter your choice: " choice
+
+	case $choice in
+	1)
+		push_changes
+		;;
+	2)
+		stow_dotfiles
+		;;
+	3)
+		merge_files
+		;;
+	4)
+		echo "Exiting..."
+		break
+		;;
+	*)
+		echo "Invalid option, please try again."
+		;;
+	esac
+done
