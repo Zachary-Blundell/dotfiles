@@ -1,0 +1,73 @@
+{
+  "Dropdown from html": {
+    "prefix": "dropdown",
+    "body": [
+      "<details>",
+      "<summary>${1:title}</summary>",
+      "  ${2:info}",
+      "</details>"
+    ],
+    "description": "Dropdown from html"
+  },
+  "Notes Page": {
+    "prefix": "note",
+    "body": [
+      "",
+      "",
+      "[Month03Notes](Month03Notes)",
+      "[DVCLog](DVCLog)",
+      "[Todo](Todo)",
+      "",
+      "",
+      "## Notes <!-- {{{ -->",
+      "",
+      "${1:note}",
+      "",
+      "<!-- End of Notes }}}  -->",
+      "",
+      "## Scratch pad <!-- {{{ -->",
+      "",
+      "",
+      "<!-- }}} -->"
+    ],
+    "description": "Notes Page"
+  },
+  "admin": {
+    "prefix": "admin",
+    "body": [
+      "- [ ] Review Emails",
+      "    - [ ] Work Email",
+      "    - [ ] Personal Email",
+      "- [ ] Review Next Week",
+      "    - [ ] Level 2 calendars",
+      "    - [ ] Copy relavent events from Emma's",
+      "- [ ] Review Tasks",
+      "    - [ ] Timebox Tasks",
+      "- [ ] Plan next three days",
+      "    Remember don't go crazy here and you got this!",
+      ""
+    ],
+    "description": "Drop in your admin todo"
+  },
+  "Add image 1 deep": {
+    "prefix": "image",
+    "body": [
+      "![image](../_resources/)"
+    ],
+    "description": "Add image 3 deep for notes file structure"
+  },
+  "Add image 2 deep": {
+    "prefix": "iimage",
+    "body": [
+      "![image](../../_resources/)"
+    ],
+    "description": "Add image 2 deep for notes file structure"
+  },
+  "Add image 3 deep": {
+    "prefix": "iiimage",
+    "body": [
+      "![image](../../../_resources/)"
+    ],
+    "description": "Add image 3 deep for notes file structure"
+  }
+}

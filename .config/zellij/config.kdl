@@ -154,8 +154,8 @@
         bind "Alt L" { MoveTab "Right"; }
 
         // move tab focus 
-        bind "Alt J" "Right" "Down" "J" { GoToNextTab; }
-        bind "Alt K" "Left" "Up" "K" { GoToPreviousTab; }
+        bind "Alt J" { GoToNextTab; }
+        bind "Alt K" { GoToPreviousTab; }
 
         // move pane focus 
         bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }
