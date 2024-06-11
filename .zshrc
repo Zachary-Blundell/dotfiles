@@ -2,10 +2,13 @@
 # ALIASES
 #######################################################
 ## Shortcuts
-# alias coding='cd ~/Code/myProjects/'
-alias coding='cd ~/Code/'
-alias dvc='cd ~/Code/dvc/ && nvim'
-alias configs='cd ~/.config/ && nvim'
+alias bibites='cd ~/bibites/ && ./The\ Bibites.x86_64 -force-vulkan &'
+alias coding='cd ~/Code/myProjects/'
+alias dvcf='cd ~/Code/Defiez-votre-cerveau/'
+alias dvc='cd ~/Code/Defiez-votre-cerveau/dvc/; nvim .'
+alias configs='cd ~/.config/ && nvim .'
+# alias gpt='ollama run llama2-uncensored'
+# backup='cd $HOME/dotfiles/ && git add . && git commit "auto save" && git push'
 backupDots() {
   cd $HOME/dotfiles/ && git add . && git commit -m "auto save" && git push;
   cd "$OLDPWD" 
@@ -23,13 +26,13 @@ alias rzsh='source ~/.zshrc' # Reload this .zshrc file
 # Edit hyprland config
 alias ehypr='cd ~/.config/hypr/hyprconfigs/; nvim .; cd "$OLDPWD"' 
 # Edit tmux
-alias etmux='cd ~/.config/tmux/; nvim tmux.conf; cd "$OLDPWD"' 
+alias etmux='cd ~/.config/tmux/; nvim .; cd "$OLDPWD"' 
 # Edit zellij
-alias ezellij='cd ~/.config/zellij/; nvim config.kdl; cd "$OLDPWD"' 
+alias ezellij='cd ~/.config/zellij/; nvim .; cd "$OLDPWD"' 
 # Edit starship
-alias estar='cd ~/.config/; nvim starship.toml; cd "$OLDPWD"' 
+alias estar='cd ~/.config/starship.toml; nvim .; cd "$OLDPWD"' 
 # Edit kitty
-alias ekitty='cd ~/.config/kitty/; nvim kitty.conf ; cd "$OLDPWD"' 
+alias ekitty='cd ~/.config/kitty/kitty.conf; nvim .; cd "$OLDPWD"' 
 # Edit waybar config
 alias ewaybar='cd ~/.config/hypr/waybar/config.ini; nvim .; cd "$OLDPWD"' 
 
@@ -46,7 +49,50 @@ alias fbuild='flutter build'
 alias fup='flutter pub upgrade'
 alias fdoc='flutter doctor'
 alias fclean='flutter clean'
-alias frunw='flutter run -d chrome'
+alias fgen='flutter gen-l10n'
+alias fweb='flutter run -d chrome'
+###-begin-flutter-completion-###
+if type complete &>/dev/null; then
+  __flutter_completion() {
+    local si="$IFS"
+    IFS=$'\n' COMPREPLY=($(COMP_CWORD="$COMP_CWORD" \
+                           COMP_LINE="$COMP_LINE" \
+                           COMP_POINT="$COMP_POINT" \
+                           flutter completion -- "${COMP_WORDS[@]}" \
+                           2>/dev/null)) || return $?
+    IFS="$si"
+  }
+  complete -F __flutter_completion flutter
+elif type compdef &>/dev/null; then
+  __flutter_completion() {
+    si=$IFS
+    compadd -- $(COMP_CWORD=$((CURRENT-1)) \
+                 COMP_LINE=$BUFFER \
+                 COMP_POINT=0 \
+                 flutter completion -- "${words[@]}" \
+                 2>/dev/null)
+    IFS=$si
+  }
+  compdef __flutter_completion flutter
+elif type compctl &>/dev/null; then
+  __flutter_completion() {
+    local cword line point words si
+    read -Ac words
+    read -cn cword
+    let cword-=1
+    read -l line
+    read -ln point
+    si="$IFS"
+    IFS=$'\n' reply=($(COMP_CWORD="$cword" \
+                       COMP_LINE="$line" \
+                       COMP_POINT="$point" \
+                       flutter completion -- "${words[@]}" \
+                       2>/dev/null)) || return $?
+    IFS="$si"
+  }
+  compctl -K __flutter_completion flutter
+fi
+###-end-flutter-completion-###
 
 ## Git
 alias gk='git clone'
@@ -107,9 +153,10 @@ alias vim='nvim'
 alias vi='nvim'
 # alias v='nvim .'
 alias l='nvim .'
-# alias sl='sudo nvim'
+alias n='nvim .'
+alias sn='sudo nvim'
 # fuzzy find a file and open with lunarvim
-alias lf='nvim $(fzf)'
+alias nf='nvim $(fzf)'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -560,6 +607,7 @@ source /usr/share/fzf/completion.zsh
 #pacman
 alias sps='sudo pacman -S'
 alias spr='sudo pacman -R'
+alias spra='sudo pacman -Rns'
 alias sprs='sudo pacman -Rs'
 alias sprdd='sudo pacman -Rdd'
 alias spqo='sudo pacman -Qo'
@@ -655,20 +703,6 @@ alias bupskel='cp -Rf /etc/skel ~/.skel-backup-$(date +%Y.%m.%d-%H.%M.%S)'
 alias cb='cp /etc/skel/.bashrc ~/.bashrc && echo "Copied."'
 alias cz='cp /etc/skel/.zshrc ~/.zshrc && exec zsh'
 alias cf='cp /etc/skel/.config/fish/config.fish ~/.config/fish/config.fish && echo "Copied."'
-
-#switch between bash and zsh
-alias tobash="sudo chsh $USER -s /bin/bash && echo 'Now log out.'"
-alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Now log out.'"
-alias tofish="sudo chsh $USER -s /bin/fish && echo 'Now log out.'"
-
-#switch between displaymanager or bootsystem
-alias toboot="sudo /usr/local/bin/arcolinux-toboot"
-alias togrub="sudo /usr/local/bin/arcolinux-togrub"
-alias tolightdm="sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings --noconfirm --needed ; sudo systemctl enable lightdm.service -f ; echo 'Lightm is active - reboot now'"
-alias tosddm="sudo pacman -S sddm --noconfirm --needed ; sudo systemctl enable sddm.service -f ; echo 'Sddm is active - reboot now'"
-alias toly="sudo pacman -S ly --noconfirm --needed ; sudo systemctl enable ly.service -f ; echo 'Ly is active - reboot now'"
-alias togdm="sudo pacman -S gdm --noconfirm --needed ; sudo systemctl enable gdm.service -f ; echo 'Gdm is active - reboot now'"
-alias tolxdm="sudo pacman -S lxdm --noconfirm --needed ; sudo systemctl enable lxdm.service -f ; echo 'Lxdm is active - reboot now'"
 
 # kill commands
 # quickly kill conkies
@@ -917,50 +951,4 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 ## Neofetch
 # neofetch | lolcat
-# neofetch 
-
-###-begin-flutter-completion-###
-
-if type complete &>/dev/null; then
-  __flutter_completion() {
-    local si="$IFS"
-    IFS=$'\n' COMPREPLY=($(COMP_CWORD="$COMP_CWORD" \
-                           COMP_LINE="$COMP_LINE" \
-                           COMP_POINT="$COMP_POINT" \
-                           flutter completion -- "${COMP_WORDS[@]}" \
-                           2>/dev/null)) || return $?
-    IFS="$si"
-  }
-  complete -F __flutter_completion flutter
-elif type compdef &>/dev/null; then
-  __flutter_completion() {
-    si=$IFS
-    compadd -- $(COMP_CWORD=$((CURRENT-1)) \
-                 COMP_LINE=$BUFFER \
-                 COMP_POINT=0 \
-                 flutter completion -- "${words[@]}" \
-                 2>/dev/null)
-    IFS=$si
-  }
-  compdef __flutter_completion flutter
-elif type compctl &>/dev/null; then
-  __flutter_completion() {
-    local cword line point words si
-    read -Ac words
-    read -cn cword
-    let cword-=1
-    read -l line
-    read -ln point
-    si="$IFS"
-    IFS=$'\n' reply=($(COMP_CWORD="$cword" \
-                       COMP_LINE="$line" \
-                       COMP_POINT="$point" \
-                       flutter completion -- "${words[@]}" \
-                       2>/dev/null)) || return $?
-    IFS="$si"
-  }
-  compctl -K __flutter_completion flutter
-fi
-
-ssh-add -l >&/dev/null || ssh-find-agent -a || eval $(ssh-agent) > /dev/null
-###-end-flutter-completion-###
+neofetch 
