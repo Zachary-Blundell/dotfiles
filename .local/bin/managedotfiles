@@ -71,6 +71,7 @@ merge_nvim() {
 
 # Main menu
 while true; do
+	clear
 	echo -e "\nSelect an option:"
 	echo "a) Push all changes to the repository"
 	echo "s) Stow all dotfiles"
@@ -94,6 +95,8 @@ while true; do
 		;;
 	q)
 		echo -e "Exiting...\n"
+		sleep 1
+		clear
 		break
 		;;
 	*)
