@@ -71,29 +71,32 @@ merge_nvim() {
 
 # Main menu
 while true; do
+	clear
 	echo -e "\nSelect an option:"
-	echo "1) Push all changes to the repository"
-	echo "2) Stow all dotfiles"
-	echo "3) Merge .zshrc from the other branch"
-	echo "4) Merge nvim folder from the other branch"
-	echo "5) Exit"
+	echo "a) Push all changes to the repository"
+	echo "s) Stow all dotfiles"
+	echo "d) Merge .zshrc from the other branch"
+	echo "f) Merge nvim folder from the other branch"
+	echo "q) Exit"
 	read -p "Enter your choice: " choice
 
 	case $choice in
-	1)
+	a)
 		push_dots
 		;;
-	2)
+	s)
 		stow_dotfiles
 		;;
-	3)
+	d)
 		merge_zshrc
 		;;
-	4)
+	f)
 		merge_nvim
 		;;
-	5)
+	q)
 		echo -e "Exiting...\n"
+		sleep 1
+		clear
 		break
 		;;
 	*)
