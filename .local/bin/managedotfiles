@@ -72,9 +72,6 @@ while true; do
 	3)
 		merge_files
 		;;
-	4)
-		goto_dotfiles
-		;;
 	5)
 		echo "Exiting..."
 		break
