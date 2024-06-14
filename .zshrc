@@ -97,6 +97,7 @@ fi
 ## Git
 alias gk='git clone'
 alias gs='git status'
+alias gl='git log --reverse'
 alias gd='git diff'
 alias ga='git add'
 alias gaa='git add .'
@@ -951,4 +952,4 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 ## Neofetch
 # neofetch | lolcat
-neofetch 
+# neofetch 

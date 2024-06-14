@@ -1,7 +1,7 @@
 autologin.canonical_username="dfie5wyktat052nhnd9zjfw84"
 autologin.saved_credentials="{\"dfie5wyktat052nhnd9zjfw84\":[\"dfie5wyktat052nhnd9zjfw84\",\"wPi+eiRZQoDrdDIPRB6+GXh9Mq8qfI1pLhblrW3v4Zb9R+/v5OtY4xbzYMr1vzjcxK+CjgoIqFia+LujjX9Z0tsRVenbDYaeg1clPmGtlSegCmiHfDEyblalOBAyI0dP1HTYDfjIq75p/2Yq4UTw8E07NwNQiBFGm0YL+cao6trectYogJw0zhionW0xuA+po8LFEYuvz7ntFnGzXVW4qr/GZtlnRrrwonlWvNlX1Y2Ea5q2VwxeZ7w3pImOBB5gxsAYH7F3TlSgeKOIcorpAuQ7Dt+UKb3wj6+6bvoNe9uLuBcmeKBLkCn1A81A4e8t4sMP47/WOr521AJLKV433A==\"]}"
 autologin.blob="wPi+eiRZQoDrdDIPRB6+GXh9Mq8qfI1pLhblrW3v4Zb9R+/v5OtY4xbzYMr1vzjcxK+CjgoIqFia+LujjX9Z0tsRVenbDYaeg1clPmGtlSegCmiHfDEyblalOBAyI0dP1HTYDfjIq75p/2Yq4UTw8E07NwNQiBFGm0YL+cao6trectYogJw0zhionW0xuA+po8LFEYuvz7ntFnGzXVW4qr/GZtlnRrrwonlWvNlX1Y2Ea5q2VwxeZ7w3pImOBB5gxsAYH7F3TlSgeKOIcorpAuQ7Dt+UKb3wj6+6bvoNe9uLuBcmeKBLkCn1A81A4e8t4sMP47/WOr521AJLKV433A=="
-core.clock_delta=0
+core.clock_delta=-1
 autologin.username="dfie5wyktat052nhnd9zjfw84"
 app.enable-chrome-runtime=true
 app.window.state=4
