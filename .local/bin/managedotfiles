@@ -83,15 +83,19 @@ while true; do
 	case $choice in
 	a)
 		push_dots
+		sleep 2
 		;;
 	s)
 		stow_dotfiles
+		sleep 2
 		;;
 	d)
 		merge_zshrc
+		sleep 2
 		;;
 	f)
 		merge_nvim
+		sleep 2
 		;;
 	q)
 		echo -e "Exiting...\n"
