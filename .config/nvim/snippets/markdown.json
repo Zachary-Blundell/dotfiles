@@ -10,11 +10,11 @@
     "description": "Dropdown from html"
   },
   "Notes Page": {
-    "prefix": "note",
+    "prefix": "outline",
     "body": [
       "",
       "",
-      "[Month03Notes](Month03Notes)",
+      "[Month06Notes](Month06Notes)",
       "[DVCLog](DVCLog)",
       "[Todo](Todo)",
       "",
