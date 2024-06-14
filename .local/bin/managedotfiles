@@ -23,7 +23,7 @@ stow_dotfiles() {
 # cd ~/dotfiles
 # cd "$OLDPWD"
 # Function to merge .zshrc and nvim folder from the other branch
-merge_files() {
+merge_zshrc() {
 	cd ~/dotfiles
 
 	current_branch=$(git symbolic-ref --short HEAD)
@@ -37,23 +37,46 @@ merge_files() {
 		exit 1
 	fi
 
-	echo "Syncing .zshrc and nvim folder from $target_branch..."
+	echo "Syncing .zshrc from $target_branch..."
 	git fetch origin
 	git checkout $target_branch -- .zshrc
+	git add .zshrc
+	git commit -m "Merged .zshrc from $target_branch"
+
+	cd "$OLDPWD"
+}
+
+merge_nvim() {
+	cd ~/dotfiles
+
+	current_branch=$(git symbolic-ref --short HEAD)
+
+	if [ "$current_branch" == "Arch-Portal" ]; then
+		target_branch="Quantum-Nexus"
+	elif [ "$current_branch" == "Quantum-Nexus" ]; then
+		target_branch="Arch-Portal"
+	else
+		echo "You are not on Arch-Portal or Quantum-Nexus branch. Exiting..."
+		exit 1
+	fi
+
+	echo "Syncing nvim folder from $target_branch..."
+	git fetch origin
 	git checkout $target_branch -- .config/nvim
-	git add .zshrc .config/nvim
-	git commit -m "Merged .zshrc and nvim from $target_branch"
+	git add .config/nvim
+	git commit -m "Merged nvim folder from $target_branch"
 
 	cd "$OLDPWD"
 }
 
 # Main menu
 while true; do
-	echo "Select an option:"
+	echo -e "\nSelect an option:"
 	echo "1) Push all changes to the repository"
 	echo "2) Stow all dotfiles"
-	echo "3) Merge .zshrc and nvim folder from the other branch"
-	echo "4) Exit"
+	echo "3) Merge .zshrc from the other branch"
+	echo "4) Merge nvim folder from the other branch"
+	echo "5) Exit"
 	read -p "Enter your choice: " choice
 
 	case $choice in
@@ -64,10 +87,13 @@ while true; do
 		stow_dotfiles
 		;;
 	3)
-		merge_files
+		merge_zshrc
 		;;
 	4)
-		echo "Exiting..."
+		merge_nvim
+		;;
+	5)
+		echo -e "Exiting...\n"
 		break
 		;;
 	*)
