@@ -69,6 +69,11 @@ merge_nvim() {
 	cd "$OLDPWD"
 }
 
+# Function to pause and wait for user confirmation
+pause() {
+	read -p "Press any key to continue..." -n1 -s
+}
+
 # Main menu
 while true; do
 	clear
@@ -83,15 +88,19 @@ while true; do
 	case $choice in
 	a)
 		push_dots
+		pause
 		;;
 	s)
 		stow_dotfiles
+		pause
 		;;
 	d)
 		merge_zshrc
+		pause
 		;;
 	f)
 		merge_nvim
+		pause
 		;;
 	q)
 		echo -e "Exiting...\n"
