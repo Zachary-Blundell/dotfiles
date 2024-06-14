@@ -5,7 +5,7 @@
 alias bibites='cd ~/bibites/ && ./The\ Bibites.x86_64 -force-vulkan &'
 alias coding='cd ~/Code/myProjects/'
 alias dvcf='cd ~/Code/Defiez-votre-cerveau/'
-alias dvc='cd ~/Code/Defiez-votre-cerveau/dvc/; nvim .'
+alias dvc='cd ~/Code/Defiez-votre-cerveau/dvc/; nvim'
 alias configs='cd ~/.config/ && nvim .'
 # alias gpt='ollama run llama2-uncensored'
 # backup='cd $HOME/dotfiles/ && git add . && git commit "auto save" && git push'
@@ -97,7 +97,7 @@ fi
 ## Git
 alias gk='git clone'
 alias gs='git status'
-alias gd='git diff'
+alias gd='git diff | less'
 alias ga='git add'
 alias gaa='git add .'
 alias gc="git commit -m "

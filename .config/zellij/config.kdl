@@ -150,12 +150,12 @@
         bind "Alt n" { NewPane; }
 
         // move tab
-        bind "Alt H" { MoveTab "Left"; }
-        bind "Alt L" { MoveTab "Right"; }
+        bind "Alt J" { MoveTab "Right"; }
+        bind "Alt K" { MoveTab "Left"; }
 
         // move tab focus 
-        bind "Alt J" { GoToNextTab; }
-        bind "Alt K" { GoToPreviousTab; }
+        bind "Alt L" { GoToNextTab; }
+        bind "Alt H" { GoToPreviousTab; }
 
         // move pane focus 
         bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }

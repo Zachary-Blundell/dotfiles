@@ -7,11 +7,7 @@ push_dots() {
 	echo "Adding all"
 	git add .
 	echo "Commiting Auto Save"
-<<<<<<< HEAD
-	git commit -m "Backup script"
-=======
 	git commit -m "Backup dotfiles from mamagement script"
->>>>>>> refs/remotes/origin/Quantum-Nexus
 	echo "Pushing"
 	git push
 	cd "$OLDPWD"
