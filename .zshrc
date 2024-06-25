@@ -50,7 +50,10 @@ alias fup='flutter pub upgrade'
 alias fdoc='flutter doctor'
 alias fclean='flutter clean'
 alias fgen='flutter gen-l10n'
+alias fcreate='flutter create .'
 alias fweb='flutter run -d chrome'
+
+alias freset='rm build && fcreate && fclean && fgen && frun'
 ###-begin-flutter-completion-###
 if type complete &>/dev/null; then
   __flutter_completion() {
@@ -153,7 +156,7 @@ alias vim='nvim'
 alias vi='nvim'
 # alias v='nvim .'
 alias l='nvim .'
-alias n='nvim .'
+alias n='nvim'
 alias sn='sudo nvim'
 # fuzzy find a file and open with lunarvim
 alias nf='nvim $(fzf)'

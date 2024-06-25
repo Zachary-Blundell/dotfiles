@@ -3,6 +3,7 @@ autologin.saved_credentials="{\"dfie5wyktat052nhnd9zjfw84\":[\"dfie5wyktat052nhn
 autologin.blob="VtskXhAGmky3keGhgvdlYI4WSjmi21BzEmoWFd3NLAcCrcgiQ234opKrydIwBKBxW38CR0g1Z041saVlFuooqmYPoXXqEWLLFIT/RwQ/aS3xj8nQXCrIt2NlrP8/0uxibCu6XvDHkhHw7eZjdVrbZFS9twLcW3FbUZKe96LhkD0UoYGj4/9u3J0wKYwp0kO/k38ZRcWXRQ2Hrl3cL9D2FIbK1v/Zza+6rjDfXTJn9ep3RFt3m7PMAk9+q8wJDYlBHVg21OxlEdeNYh1oDq0h90INaVGscwVh1i8sJWnJNkBk9HOzjyE4sXcO3bkCstVB6uPPPpZimDcbyxaNE4NZiw=="
 core.clock_delta=0
 autologin.username="dfie5wyktat052nhnd9zjfw84"
+app.enable-chrome-runtime=true
 app.window.state=4
 storage.last-location="/home/zaiquiri/.cache/spotify/Storage"
 app.window.state.saved=true
