@@ -1,3 +1,7 @@
-audio.play_bitrate_non_metered_migrated=true
+audio.equalizer_v2=true
+audio.downmixer_v2=true
 connect.dial_devices="[]"
-app.player.volume=41939
+audio.play_bitrate_non_metered_migrated=true
+audio.play_bitrate_enumeration=3
+audio.play_bitrate_non_metered_enumeration=3
+app.player.volume=47918
