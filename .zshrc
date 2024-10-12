@@ -7,6 +7,8 @@ alias coding='cd ~/Code/myProjects/'
 alias dvcf='cd ~/Code/Defiez-votre-cerveau/'
 alias dvc='cd ~/Code/Defiez-votre-cerveau/dvc/; nvim'
 alias configs='cd ~/.config/ && nvim .'
+alias work='zellij --layout=work_layout'
+alias updown='yes | update && shutdown'
 # alias gpt='ollama run llama2-uncensored'
 # backup='cd $HOME/dotfiles/ && git add . && git commit "auto save" && git push'
 backupDots() {

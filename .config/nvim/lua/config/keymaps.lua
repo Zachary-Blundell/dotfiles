@@ -12,8 +12,8 @@ keymap("n", "<A-T>", ":r! date +\\%d\\ \\%a\\ \\%b\\ \\%y\\ \\%Z <CR>")
 -- 14:17:20
 keymap("n", "<A-t>", ":r! date +\\%H:\\%M:\\%S <CR>")
 --  quick write
--- vim.keymap.del("n", "<leader>w")
-keymap({ "n" }, "<leader>w", ":w<CR>", { desc = "Write" })
+-- vim.keymap.del({ "n", "i", "v" }, "<leader>w")
+keymap("n", "<leader>w", ":w<CR>", { desc = "Write" })
 
 -- Insert --
 -- Press jk fast to enter
