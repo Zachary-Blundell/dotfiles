@@ -1,0 +1,32 @@
+window {
+  margin: 10px;
+  border: 2px solid #b4befe;
+  border-radius: 10px;
+  background-color: #1e1e2e;
+}
+
+#input {
+  margin: 5px;
+  background-color: #b4befe;
+}
+
+#text {
+  margin: 2px;
+  color: #cdd6f4;
+  font-size: 20px;
+}
+#text:selected {
+  /*color: purple;*/
+  color: #f9e2af;
+  font-weight: bold;
+}
+
+#entry:selected {
+  background-color: rgba(0,0,0,0);
+}
+
+#inner-box {
+  margin: 10px;
+  border-radius: 10px;
+  background-color: #313244;
+}
