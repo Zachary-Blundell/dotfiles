@@ -13,6 +13,6 @@ lock)
   swaylock
   ;;
 logout)
-  swaymsg exit
+  hyprctl dispatch exit
   ;;
 esac
