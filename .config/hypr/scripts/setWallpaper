@@ -24,7 +24,7 @@ file_exists() {
 
 select_background_image() {
   local start_file="$1"
-  yad --file --filename="$start_file" --file-filter='Image files | *.png *.jpg *.jpeg' --title="Select Background Image"
+  zenity --file-selection --filename="$start_file" --file-filter='Image files | *.png *.jpg *.jpeg' --title="Select Background Image"
 }
 
 # Parse command-line arguments
@@ -49,7 +49,6 @@ elif [ "$#" -eq 0 ]; then
   else
     selected_wallpaper=$(select_background_image "$DEFAULT_DIR")
   fi
-  echo "here is the select_background_image: $selected_wallpaper"
 else
   echo "Usage: $0 [--select]" >&2
   exit 1

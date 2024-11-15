@@ -9,14 +9,6 @@ alias dvc='cd ~/Code/Defiez-votre-cerveau/dvc/; nvim'
 alias configs='cd ~/.config/ && nvim .'
 alias work='zellij --layout=work_layout'
 alias updown='yes | update && shutdown'
-backupDots() {
-  cd $HOME/dotfiles/ && git add . && git commit -m "auto save" && git push;
-  cd "$OLDPWD" 
-}
-restoreDots() {
-  cd $HOME/dotfiles && stow .
-  cd "$OLDPWD" 
-}
 
 ## Edit Configs
 # Edit this .zshrc file

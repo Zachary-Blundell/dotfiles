@@ -36,7 +36,6 @@ shutdown_processes() {
     pkill -f morgen
 
     # Stop and disable background services
-    show_info_message "Stopping background services..." --timeout=0.5
     sudo systemctl stop ollama
     sudo systemctl stop nordvpnd
 
