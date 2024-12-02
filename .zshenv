@@ -3,8 +3,8 @@
 emulate ksh -c "source ~/.ssh-find-agent/ssh-find-agent.sh"
 ssh-add -l >&/dev/null || ssh-find-agent -a || eval $(ssh-agent) > /dev/null
 
-export EDITOR=lvim
-export VISUAL=lvim
+export EDITOR=nvim
+export VISUAL=nvim
 export CHROME_EXECUTABLE=/usr/bin/chromium
 
 export HISTCONTROL=ignoreboth:erasedups
