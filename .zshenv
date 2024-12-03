@@ -30,4 +30,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # export XAUTHORITY=/home/zaiquiri/.Xauthority
 
+# For flutter 
+export CHROME_EXECUTABLE=/usr/bin/chromium
+
 # export DISPLAY=:1

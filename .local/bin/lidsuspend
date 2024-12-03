@@ -1,4 +1,3 @@
-
 #!/bin/bash
 # This is changes suspend options on laptop lid close suspend key press 
 function suspend_deactivated
@@ -20,7 +19,7 @@ function suspend_activated
 
 function help
 {
-  echo "-s | start to start and -x | stop to stop"
+  echo -e "-a | a | activate to have suspend on lid close active \n -d | d | deactivate to have suspend on lid close deactived"
 }
 
 while [ "$1" != "" ]; do
