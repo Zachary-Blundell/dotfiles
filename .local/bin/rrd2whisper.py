@@ -1,0 +1,1 @@
+/home/zaiquiri/.local/share/pipx/venvs/whisper/bin/rrd2whisper.py

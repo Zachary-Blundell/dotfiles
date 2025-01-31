@@ -2,10 +2,11 @@
 source ~/.ssh-find-agent/ssh-find-agent.sh
 emulate ksh -c "source ~/.ssh-find-agent/ssh-find-agent.sh"
 ssh-add -l >&/dev/null || ssh-find-agent -a || eval $(ssh-agent) > /dev/null
-# ssh-find-agent -a || eval $(ssh-agent) > /dev/null
+ssh-find-agent -a || eval $(ssh-agent) > /dev/null
+
 export QT_QPA_PLATFORMTHEME=qt5ct
-export EDITOR=lvim
-export VISUAL=lvim
+export EDITOR=nvim
+export VISUAL=nvim
 
 export HISTCONTROL=ignoreboth:erasedups
 export PAGER='most'
@@ -34,3 +35,5 @@ export NVM_DIR="$HOME/.nvm"
 export CHROME_EXECUTABLE=/usr/bin/chromium
 
 # export DISPLAY=:1
+# For Dotfiles Manager
+export DOTFILES_DIR=/home/zaiquiri/dotfiles

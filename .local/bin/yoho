@@ -8,17 +8,15 @@ function start {
   pkill -f conky
   pkill -f teams
   pkill -f morgen
+  sudo systemctl stop sshd
+  sudo systemctl stop jellyfin.service
   nordvpn c Kansas_City
-  nordvpn set killswitch on
-  librewolf torrentgalaxy.to watchsomuch.to &
+  nordvpn set killswitch on && librewolf torrentgalaxy.to watchsomuch.to &
   qbittorrent &
 }
 
 function stop {
-  pkill librewolf
-  pkill qbittorrent
-  nordvpn d
-  nordvpn set killswitch off
+  pkill -f librewolf && pkill -f qbittorrent && nordvpn d && nordvpn set killswitch off
 }
 
 function help {

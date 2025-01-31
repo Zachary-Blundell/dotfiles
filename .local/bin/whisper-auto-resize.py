@@ -1,0 +1,1 @@
+/home/zaiquiri/.local/share/pipx/venvs/whisper/bin/whisper-auto-resize.py
