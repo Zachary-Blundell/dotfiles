@@ -2,12 +2,13 @@
 # ALIASES
 #######################################################
 ## Shortcuts
+alias bibites='cd ~/bibites/ && ./The\ Bibites.x86_64 -force-vulkan &'
 alias coding='cd ~/Code/myProjects/'
 alias dvcf='cd ~/Code/Defiez-votre-cerveau/'
-alias dvc='cd ~/Code/Defiez-votre-cerveau/dvc/; git pull && nvim'
+alias dvc='cd ~/Code/Defiez-votre-cerveau/dvc/; nvim'
 alias configs='cd ~/.config/ && nvim .'
-alias work='zellij --layout=work_layout'
-alias updown='yes | update && shutdown'
+# alias gpt='ollama run llama2-uncensored'
+# backup='cd $HOME/dotfiles/ && git add . && git commit "auto save" && git push'
 backupDots() {
   cd $HOME/dotfiles/ && git add . && git commit -m "auto save" && git push;
   cd "$OLDPWD" 
@@ -31,7 +32,7 @@ alias ezellij='cd ~/.config/zellij/; nvim .; cd "$OLDPWD"'
 # Edit starship
 alias estar='cd ~/.config/starship.toml; nvim .; cd "$OLDPWD"' 
 # Edit kitty
-alias ekitty='nvim ~/.config/kitty/kitty.conf; cd "$OLDPWD"' 
+alias ekitty='cd ~/.config/kitty/kitty.conf; nvim .; cd "$OLDPWD"' 
 # Edit waybar config
 alias ewaybar='cd ~/.config/hypr/waybar/config.ini; nvim .; cd "$OLDPWD"' 
 
@@ -50,8 +51,6 @@ alias fdoc='flutter doctor'
 alias fclean='flutter clean'
 alias fgen='flutter gen-l10n'
 alias fweb='flutter run -d chrome'
-
-alias freset='rm build && fcreate && fclean && fgen && frun'
 ###-begin-flutter-completion-###
 if type complete &>/dev/null; then
   __flutter_completion() {
@@ -98,13 +97,11 @@ fi
 ## Git
 alias gk='git clone'
 alias gs='git status'
-alias gl='git log --reverse'
-alias gd='git diff'
+alias gd='git diff | less'
 alias ga='git add'
 alias gaa='git add .'
 alias gc="git commit -m "
-alias gp='git pull'
-alias gP='git push'
+alias gp='git push'
 alias gnb='git checkout -b' #new branch
 alias gcb="git checkout"    #change branch
 alias grh="git reset --hard"
@@ -124,27 +121,24 @@ alias cd='z'
 alias cd..='cd ..'
 alias ..='cd ..'
 alias ...='cd ../..'
-alias .3='cd ../../..'
-alias .4='cd ../../../..'
-alias .5='cd ../../../../..'
-# Goes up a specified number of directories  (i.e. up 4)
-up ()
-{
-	local d=""
-	limit=$1
-	for ((i=1 ; i <= limit ; i++))
-		do
-			d=$d/..
-		done
-	d=$(echo $d | sed 's/^\///')
-	if [ -z "$d" ]; then
-		d=..
-	fi
-	cd $d
-}
-
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
 # cd into the old directory
 alias bd='cd "$OLDPWD"'
+
+#arcolinux applications
+#att is a symbolic link now
+#alias att="archlinux-tweak-tool"
+alias adt="arcolinux-desktop-trasher"
+alias abl="arcolinux-betterlockscreen"
+alias agm="arcolinux-get-mirrors"
+alias amr="arcolinux-mirrorlist-rank-info"
+alias aom="arcolinux-osbeck-as-mirror"
+alias ars="arcolinux-reflector-simple"
+alias atm="arcolinux-tellme"
+alias avs="arcolinux-vbox-share"
+alias awa="arcolinux-welcome-app"
 
 # Chmod alias commands
 alias mx='chmod a+x'
@@ -157,10 +151,11 @@ alias 777='chmod -R 777'
 # Editor stuff
 alias vim='nvim'
 alias vi='nvim'
-alias l='nvim'
-alias n='nvim'
+# alias v='nvim .'
+alias l='nvim .'
+alias n='nvim .'
 alias sn='sudo nvim'
-# fuzzy find a file and open with nvim
+# fuzzy find a file and open with lunarvim
 alias nf='nvim $(fzf)'
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -170,6 +165,9 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # alias to show the date
 alias da='date "+%Y-%m-%d %A %T %Z"'
 
+# Help people new to Arch
+alias apt='man pacman'
+alias apt-get='man pacman'
 alias please='sudo'
 alias tb='nc termbin.com 9999'
 alias helpme='cht.sh --shell'
@@ -245,48 +243,33 @@ alias untar='tar -xvf'
 alias unbz2='tar -xvjf'
 alias ungz='tar -xvzf'
 
-# # ex = EXtractor for all kinds of archives
-function ex {
- if [ -z "$1" ]; then
-    # display usage if no parameters given
-    echo "Usage: ex <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz>"
-    echo "       extract <path/file_name_1.ext> [path/file_name_2.ext] [path/file_name_3.ext]"
- else
-    for n in "$@"
-    do
-      if [ -f "$n" ] ; then
-          case "${n%,}" in
-            *.cbt|*.tar.bz2|*.tar.gz|*.tar.xz|*.tbz2|*.tgz|*.txz|*.tar)
-                         tar xvf "$n"       ;;
-            *.lzma)      unlzma ./"$n"      ;;
-            *.bz2)       bunzip2 ./"$n"     ;;
-            *.cbr|*.rar)       unrar x -ad ./"$n" ;;
-            *.gz)        gunzip ./"$n"      ;;
-            *.cbz|*.epub|*.zip)       unzip ./"$n"       ;;
-            *.z)         uncompress ./"$n"  ;;
-            *.7z|*.arj|*.cab|*.cb7|*.chm|*.deb|*.dmg|*.iso|*.lzh|*.msi|*.pkg|*.rpm|*.udf|*.wim|*.xar)
-                         7z x ./"$n"        ;;
-            *.xz)        unxz ./"$n"        ;;
-            *.exe)       cabextract ./"$n"  ;;
-            *.cpio)      cpio -id < ./"$n"  ;;
-            *.cba|*.ace)      unace x ./"$n"      ;;
-            *)
-                         echo "ex: '$n' - unknown archive method"
-                         return 1
-                         ;;
-          esac
-      else
-          echo "'$n' - file does not exist"
-          return 1
-      fi
-    done
-fi
-} # Help people new to Arch alias apt='man pacman'
-alias apt-get='man pacman'
-
 #######################################################
 # SPECIAL FUNCTIONS
 #######################################################
+
+# Extracts any archive(s) (if unp isn't installed)
+extract () {
+	for archive in "$@"; do
+		if [ -f "$archive" ] ; then
+			case $archive in
+				*.tar.bz2)   tar xvjf $archive    ;;
+				*.tar.gz)    tar xvzf $archive    ;;
+				*.bz2)       bunzip2 $archive     ;;
+				*.rar)       rar x $archive       ;;
+				*.gz)        gunzip $archive      ;;
+				*.tar)       tar xvf $archive     ;;
+				*.tbz2)      tar xvjf $archive    ;;
+				*.tgz)       tar xvzf $archive    ;;
+				*.zip)       unzip $archive       ;;
+				*.Z)         uncompress $archive  ;;
+				*.7z)        7z x $archive        ;;
+				*)           echo "don't know how to extract '$archive'..." ;;
+			esac
+		else
+			echo "'$archive' is not a valid file!"
+		fi
+	done
+}
 
 # Searches for text in all files in the current folder
 ftext ()
@@ -347,6 +330,22 @@ mkdirg ()
 {
 	mkdir -p "$1"
 	cd "$1"
+}
+
+# Goes up a specified number of directories  (i.e. up 4)
+up ()
+{
+	local d=""
+	limit=$1
+	for ((i=1 ; i <= limit ; i++))
+		do
+			d=$d/..
+		done
+	d=$(echo $d | sed 's/^\///')
+	if [ -z "$d" ]; then
+		d=..
+	fi
+	cd $d
 }
 
 #Automatically do an ls after each cd
@@ -744,10 +743,21 @@ alias mirrorxx="sudo reflector --age 6 --latest 20  --fastest 20 --threads 20 --
 alias ram='rate-mirrors --allow-root --disable-comments arch | sudo tee /etc/pacman.d/mirrorlist'
 alias rams='rate-mirrors --allow-root --disable-comments --protocol https arch  | sudo tee /etc/pacman.d/mirrorlist'
 
+#mounting the folder Public for exchange between host and guest on virtualbox
+alias vbm="sudo /usr/local/bin/arcolinux-vbox-share"
+
 #enabling vmware services
 alias start-vmware="sudo systemctl enable --now vmtoolsd.service"
 alias vmware-start="sudo systemctl enable --now vmtoolsd.service"
 alias sv="sudo systemctl enable --now vmtoolsd.service"
+
+#shopt
+#shopt -s autocd # change to named directory
+#shopt -s cdspell # autocorrects cd misspellings
+#shopt -s cmdhist # save multi-line commands in history as single line
+#shopt -s dotglob
+#shopt -s histappend # do not overwrite history
+#shopt -s expand_aliases # expand aliases
 
 #youtube download
 alias yta-aac="yt-dlp --extract-audio --audio-format aac "
@@ -759,6 +769,10 @@ alias ytv-best="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+besta
 #Recent Installed Packages
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 alias riplong="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -3000 | nl"
+
+#iso and version used to install ArcoLinux
+alias iso="cat /etc/dev-rel | awk -F '=' '/ISO/ {print $2}'"
+alias isoo="cat /etc/dev-rel"
 
 #Cleanup orphaned packages
 alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
@@ -783,7 +797,8 @@ alias rg="rg --sort path"
 #get the error messages from journalctl
 alias jctl="journalctl -p 3 -xb"
 
-#nvim for important configuration files
+#nano for important configuration files
+#know what you do in these files
 alias elxdm="sudo $EDITOR /etc/lxdm/lxdm.conf"
 alias elightdm="sudo $EDITOR /etc/lightdm/lightdm.conf"
 alias epacman="sudo $EDITOR /etc/pacman.conf"
@@ -810,6 +825,22 @@ alias evconsole="sudo $EDITOR /etc/vconsole.conf"
 alias eenvironment="sudo $EDITOR /etc/environment"
 alias eloader="sudo $EDITOR /boot/efi/loader/loader.conf"
 
+
+#reading logs with bat
+alias lcalamares="bat /var/log/Calamares.log"
+alias lpacman="bat /var/log/pacman.log"
+alias lxorg="bat /var/log/Xorg.0.log"
+alias lxorgo="bat /var/log/Xorg.0.log.old"
+
+#gpg
+#verify signature for isos
+alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
+alias fix-gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
+#receive the key of a developer
+alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
+alias fix-gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
+alias fix-keyserver="[ -d ~/.gnupg ] || mkdir ~/.gnupg ; cp /etc/pacman.d/gnupg/gpg.conf ~/.gnupg/ ; echo 'done'"
+
 #fixes
 alias fix-permissions="sudo chown -R $USER:$USER ~/.config ~/.local"
 alias keyfix="/usr/local/bin/arcolinux-fix-pacman-databases-and-keys"
@@ -826,6 +857,10 @@ alias fix-pacman-keyserver="/usr/local/bin/arcolinux-fix-pacman-gpg-conf"
 alias fix-grub="/usr/local/bin/arcolinux-fix-grub"
 alias fixgrub="/usr/local/bin/arcolinux-fix-grub"
 
+#maintenance
+alias big="expac -H M '%m\t%n' | sort -h | nl"
+alias downgrada="sudo downgrade --ala-url https://ant.seedhost.eu/arcolinux/"
+
 #hblock (stop tracking with hblock)
 #use unhblock to stop using hblock
 alias unhblock="hblock -S none -D none"
@@ -833,6 +868,13 @@ alias unhblock="hblock -S none -D none"
 #systeminfo
 alias probe="sudo -E hw-probe -all -upload"
 alias sysfailed="systemctl list-units --failed"
+
+#shutdown or reboot
+alias ssn="sudo shutdown now"
+alias sr="reboot"
+
+#update betterlockscreen images
+alias bls="betterlockscreen -u /usr/share/backgrounds/arcolinux/"
 
 #give the list of all installed desktops - xsessions desktops
 alias xd="ls /usr/share/xsessions"
@@ -845,6 +887,36 @@ alias kernels="ls /usr/lib/modules"
 #am I on grub or systemd-boot
 alias boot="sudo bootctl status | grep Product"
 
+# # ex = EXtractor for all kinds of archives
+# # usage: ex <file>
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1   ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *.deb)       ar x $1      ;;
+      *.tar.xz)    tar xf $1    ;;
+      *.tar.zst)   tar xf $1    ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+#wayland aliases
+alias wsimplescreen="wf-recorder -a"
+alias wsimplescreenrecorder="wf-recorder -a -c h264_vaapi -C aac -d /dev/dri/renderD128 --file=recording.mp4"
 
 #btrfs aliases
 alias btrfsfs="sudo btrfs filesystem df /"
@@ -857,9 +929,21 @@ alias snapli="sudo snapper list"
 alias snapcr="sudo snapper -c root create"
 alias snapch="sudo snapper -c home create"
 
+#Leftwm aliases
+alias lti="leftwm-theme install"
+alias ltu="leftwm-theme uninstall"
+alias lta="leftwm-theme apply"
+alias ltupd="leftwm-theme update"
+alias ltupg="leftwm-theme upgrade"
+
 #pamac
 alias pamac-unlock="sudo rm /var/tmp/pamac/dbs/db.lock"
 
+# plugins=(git)
+
+# if [ -f $ZSH/oh-my-zsh.sh ]; then
+#   source $ZSH/oh-my-zsh.sh
+# fi
 
 ## Starship
 eval "$(starship init zsh)"
@@ -867,4 +951,4 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 ## Neofetch
 # neofetch | lolcat
-# neofetch 
+neofetch 
