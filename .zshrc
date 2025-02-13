@@ -8,6 +8,8 @@ alias dvcf='cd ~/Code/Defiez-votre-cerveau/'
 alias dvc='cd ~/Code/Defiez-votre-cerveau/dvc/; nvim'
 alias configs='cd ~/.config/ && nvim .'
 alias work='zellij --layout=work_layout'
+alias coding='zellij --layout=coding_layout'
+alias zellij='zellij -l welcome'
 alias updown='yes | update && shutdown'
 
 ## Edit Configs
@@ -22,9 +24,9 @@ alias etmux='cd ~/.config/tmux/; nvim .; cd "$OLDPWD"'
 # Edit zellij
 alias ezellij='cd ~/.config/zellij/; nvim .; cd "$OLDPWD"' 
 # Edit starship
-alias estar='cd ~/.config/starship.toml; nvim .; cd "$OLDPWD"' 
+alias estar='cd ~/.config/; nvim starship.toml; cd "$OLDPWD"' 
 # Edit kitty
-alias ekitty='cd ~/.config/kitty/kitty.conf; nvim .; cd "$OLDPWD"' 
+alias ekitty='cd ~/.config/kitty/; nvim kitty.conf; cd "$OLDPWD"' 
 # Edit waybar config
 alias ewaybar='cd ~/.config/hypr/waybar/config.ini; nvim .; cd "$OLDPWD"' 
 
@@ -252,8 +254,7 @@ extract () {
 }
 
 # Searches for text in all files in the current folder
-ftext ()
-{
+ftext () {
 	# -i case-insensitive
 	# -I ignore binary files
 	# -H causes filename to be printed

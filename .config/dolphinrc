@@ -7,6 +7,9 @@ DirHistory[$e]=$HOME/Documents/IMPOTS_2023/
 Version=202
 ViewPropsTimestamp=2024,4,21,11,35,14.02
 
+[IconsMode]
+PreviewSize=96
+
 [KFileDialog Settings]
 Places Icons Auto-resize=false
 Places Icons Static Size=22
