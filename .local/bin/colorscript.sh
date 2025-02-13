@@ -63,23 +63,7 @@ function _run_by_name() {
     exec "${DIR_COLORSCRIPTS}/$1"
   else
     echo "Input error, Don't have color script named $1."
-    exit 1
-  fi
-}
-
-function _run_by_index() {
-  if [[ "$1" -gt 0 && "$1" -le "${length_colorscripts}" ]]; then
-
-    colorscript="$(echo "${list_colorscripts}" | sed -n ${1}p |
-      tr -d ' ' | tr '\t' ' ' | cut -d ' ' -f 2)"
-    exec "${DIR_COLORSCRIPTS}/${colorscript}"
-  else
-    echo "Input error, Don't have color script indexed $1."
-    exit 1
-  fi
-}
-
-function _run_colorscript() {
+    exit 1 fi } function _run_by_index() { if [[ "$1" -gt 0 && "$1" -le "${length_colorscripts}" ]]; then colorscript="$(echo "${list_colorscripts}" | sed -n ${1}p | tr -d ' ' | tr '\t' ' ' | cut -d ' ' -f 2)" exec "${DIR_COLORSCRIPTS}/${colorscript}" else echo "Input error, Don't have color script indexed $1." exit 1 fi } function _run_colorscript() {
   if [[ "$1" =~ ^[0-9]+$ ]]; then
     _run_by_index "$1"
   else

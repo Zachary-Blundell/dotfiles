@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Simple CLI for shell-color-scripts
+
+DIR_GAMINGSCRIPTS="./gamingcolorscripts"
+
+LS_CMD="$(command -v find) ${DIR_GAMINGSCRIPTS} -maxdepth 1 -type f"
+length_gamingscripts="$($LS_CMD | wc -l)"
+
+function _random() {
+  declare -i random_index=$RANDOM%$length_gamingscripts
+  [[ $random_index -eq 0 ]] && random_index=1
+
+  random_gamingscript="$(echo "${list_gamingscripts}" | sed -n ${random_index}p |
+    tr -d ' ' | tr '\t' ' ' | cut -d ' ' -f 2)"
+  exec "${DIR_GAMINGSCRIPTS}/${random_gamingscript}"
+}
+_random
