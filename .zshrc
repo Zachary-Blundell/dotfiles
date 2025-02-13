@@ -7,16 +7,10 @@ alias coding='cd ~/Code/myProjects/'
 alias dvcf='cd ~/Code/Defiez-votre-cerveau/'
 alias dvc='cd ~/Code/Defiez-votre-cerveau/dvc/; nvim'
 alias configs='cd ~/.config/ && nvim .'
-# alias gpt='ollama run llama2-uncensored'
-# backup='cd $HOME/dotfiles/ && git add . && git commit "auto save" && git push'
-backupDots() {
-  cd $HOME/dotfiles/ && git add . && git commit -m "auto save" && git push;
-  cd "$OLDPWD" 
-}
-restoreDots() {
-  cd $HOME/dotfiles && stow .
-  cd "$OLDPWD" 
-}
+alias work='zellij --layout=work_layout'
+alias coding='zellij --layout=coding_layout'
+alias zellij='zellij -l welcome'
+alias updown='yes | update && shutdown'
 
 ## Edit Configs
 # Edit this .zshrc file
@@ -30,9 +24,9 @@ alias etmux='cd ~/.config/tmux/; nvim .; cd "$OLDPWD"'
 # Edit zellij
 alias ezellij='cd ~/.config/zellij/; nvim .; cd "$OLDPWD"' 
 # Edit starship
-alias estar='cd ~/.config/starship.toml; nvim .; cd "$OLDPWD"' 
+alias estar='cd ~/.config/; nvim starship.toml; cd "$OLDPWD"' 
 # Edit kitty
-alias ekitty='cd ~/.config/kitty/kitty.conf; nvim .; cd "$OLDPWD"' 
+alias ekitty='cd ~/.config/kitty/; nvim kitty.conf; cd "$OLDPWD"' 
 # Edit waybar config
 alias ewaybar='cd ~/.config/hypr/waybar/config.ini; nvim .; cd "$OLDPWD"' 
 
@@ -50,7 +44,10 @@ alias fup='flutter pub upgrade'
 alias fdoc='flutter doctor'
 alias fclean='flutter clean'
 alias fgen='flutter gen-l10n'
+alias fcreate='flutter create .'
 alias fweb='flutter run -d chrome'
+
+alias freset='rm build && fcreate && fclean && fgen && frun'
 ###-begin-flutter-completion-###
 if type complete &>/dev/null; then
   __flutter_completion() {
@@ -101,7 +98,8 @@ alias gd='git diff | less'
 alias ga='git add'
 alias gaa='git add .'
 alias gc="git commit -m "
-alias gp='git push'
+alias gp='git pull'
+alias gP='git push'
 alias gnb='git checkout -b' #new branch
 alias gcb="git checkout"    #change branch
 alias grh="git reset --hard"
@@ -127,19 +125,6 @@ alias ......='cd ../../../../..'
 # cd into the old directory
 alias bd='cd "$OLDPWD"'
 
-#arcolinux applications
-#att is a symbolic link now
-#alias att="archlinux-tweak-tool"
-alias adt="arcolinux-desktop-trasher"
-alias abl="arcolinux-betterlockscreen"
-alias agm="arcolinux-get-mirrors"
-alias amr="arcolinux-mirrorlist-rank-info"
-alias aom="arcolinux-osbeck-as-mirror"
-alias ars="arcolinux-reflector-simple"
-alias atm="arcolinux-tellme"
-alias avs="arcolinux-vbox-share"
-alias awa="arcolinux-welcome-app"
-
 # Chmod alias commands
 alias mx='chmod a+x'
 alias 000='chmod -R 000'
@@ -153,9 +138,9 @@ alias vim='nvim'
 alias vi='nvim'
 # alias v='nvim .'
 alias l='nvim .'
-alias n='nvim .'
+alias n='nvim'
 alias sn='sudo nvim'
-# fuzzy find a file and open with lunarvim
+# fuzzy find a file and open with nvim
 alias nf='nvim $(fzf)'
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -165,9 +150,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # alias to show the date
 alias da='date "+%Y-%m-%d %A %T %Z"'
 
-# Help people new to Arch
-alias apt='man pacman'
-alias apt-get='man pacman'
 alias please='sudo'
 alias tb='nc termbin.com 9999'
 alias helpme='cht.sh --shell'
@@ -272,8 +254,7 @@ extract () {
 }
 
 # Searches for text in all files in the current folder
-ftext ()
-{
+ftext () {
 	# -i case-insensitive
 	# -I ignore binary files
 	# -H causes filename to be printed
@@ -951,4 +932,4 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 ## Neofetch
 # neofetch | lolcat
-neofetch 
+# neofetch 
