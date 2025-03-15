@@ -11,6 +11,7 @@ alias work='zellij --layout=work_layout'
 alias coding='zellij --layout=coding_layout'
 alias zellij='zellij -l welcome'
 alias updown='yes | update && shutdown'
+alias essh='sudoedit /etc/ssh/sshd_config && sudo systemctl restart sshd'
 
 ## Edit Configs
 # Edit this .zshrc file

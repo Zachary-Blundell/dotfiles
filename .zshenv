@@ -31,4 +31,6 @@ export NVM_DIR="$HOME/.nvm"
 export XAUTHORITY=/home/zaiquiri/.Xauthority
 
 # export DISPLAY=:0
-
+export AQ_DRM_DEVICES="/dev/dri/card1"
+export WLR_DRM_DEVICES=/dev/dri/card1
+export DRI_PRIME=0
