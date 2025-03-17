@@ -3,34 +3,34 @@
 emulate ksh -c "source ~/.ssh-find-agent/ssh-find-agent.sh"
 ssh-add -l >&/dev/null || ssh-find-agent -a || eval $(ssh-agent) > /dev/null
 
-export EDITOR=nvim
-export VISUAL=nvim
-export CHROME_EXECUTABLE=/usr/bin/chromium
-
-export HISTCONTROL=ignoreboth:erasedups
-export PAGER='most'
-
-# flutter 
-export PATH=/usr/bin/flutter/bin:$PATH
-# Android Studio
-export PATH=/usr/bin/android-studio/bin:$PATH
-export PATH=/snap/bin:$PATH
-
-if [ -d "$HOME/.bin" ] ; then 
-  export PATH=$HOME/.bin:$PATH
-fi
-
-if [ -d "$HOME/.local/bin" ] ; then 
-  export PATH=$HOME/.local/bin:$PATH
-fi
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export XAUTHORITY=/home/zaiquiri/.Xauthority
-
-# export DISPLAY=:0
-export AQ_DRM_DEVICES="/dev/dri/card1"
-export WLR_DRM_DEVICES=/dev/dri/card1
-export DRI_PRIME=0
+# export EDITOR=nvim
+# export VISUAL=nvim
+# export CHROME_EXECUTABLE=/usr/bin/chromium
+#
+# export HISTCONTROL=ignoreboth:erasedups
+# export PAGER='most'
+#
+# # flutter 
+# export PATH=/usr/bin/flutter/bin:$PATH
+# # Android Studio
+# export PATH=/usr/bin/android-studio/bin:$PATH
+# export PATH=/snap/bin:$PATH
+#
+# if [ -d "$HOME/.bin" ] ; then 
+#   export PATH=$HOME/.bin:$PATH
+# fi
+#
+# if [ -d "$HOME/.local/bin" ] ; then 
+#   export PATH=$HOME/.local/bin:$PATH
+# fi
+#
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#
+# export XAUTHORITY=/home/zaiquiri/.Xauthority
+#
+# # export DISPLAY=:0
+# export AQ_DRM_DEVICES="/dev/dri/card1"
+# export WLR_DRM_DEVICES=/dev/dri/card1
+# export DRI_PRIME=0
