@@ -18,8 +18,8 @@ alias bibites='cd ~/bibites/ && ./The\ Bibites.x86_64 -force-vulkan &'
 alias coding='cd ~/Code/myProjects/'
 alias dvcf='cd ~/Code/Defiez-votre-cerveau/'
 alias dvc='cd ~/Code/Defiez-votre-cerveau/dvc/; nvim'
-alias configs='cd ~/.config/ && nvim .'
 alias work='zellij --layout=work_layout'
+alias zn='zellij --layout=note_layout'
 alias coding='zellij --layout=coding_layout'
 alias zellij='zellij -l welcome'
 alias updown='yes | update && shutdown'
@@ -30,12 +30,14 @@ alias essh='sudoedit /etc/ssh/sshd_config && sudo systemctl restart sshd'
 # Edit this .zshrc file
 alias ezsh='$EDITOR ~/.config/zshrc; source ~/.zshrc'
 alias ez='$EDITOR ~/.config/zshrc; source ~/.zshrc'
+alias rzsh='source ~/.zshrc'
 # Edit hyprland config
 alias ehypr='$EDITOR ~/.config/hypr/conf/' 
 # Edit tmux
 # alias etmux='cd ~/.config/tmux/; nvim .; cd "$OLDPWD"' 
 # Edit zellij
-alias ezellij='cd ~/.config/zellij/; nvim .; cd "$OLDPWD"' 
+alias econfigs='$EDITOR ~/.config/' 
+alias ezellij='$EDITOR ~/.config/zellij/' 
 # Edit starship
 # alias estar='cd ~/.config/; nvim starship.toml; cd "$OLDPWD"' 
 # Edit kitty

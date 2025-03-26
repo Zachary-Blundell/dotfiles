@@ -3,6 +3,7 @@
 emulate ksh -c "source ~/.ssh-find-agent/ssh-find-agent.sh"
 ssh-add -l >&/dev/null || ssh-find-agent -a || eval $(ssh-agent) > /dev/null
 
+export SHELL=/usr/bin/zsh
 # export EDITOR=nvim
 # export VISUAL=nvim
 # export CHROME_EXECUTABLE=/usr/bin/chromium
@@ -10,9 +11,9 @@ ssh-add -l >&/dev/null || ssh-find-agent -a || eval $(ssh-agent) > /dev/null
 # export HISTCONTROL=ignoreboth:erasedups
 # export PAGER='most'
 #
-# # flutter 
-# export PATH=/usr/bin/flutter/bin:$PATH
-# # Android Studio
+# flutter 
+export PATH=/usr/bin/flutter/bin:$PATH
+# Android Studio
 # export PATH=/usr/bin/android-studio/bin:$PATH
 # export PATH=/snap/bin:$PATH
 #
