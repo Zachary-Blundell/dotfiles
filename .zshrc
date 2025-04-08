@@ -11,6 +11,9 @@ alias work='zellij --layout=work_layout'
 alias coding='zellij --layout=coding_layout'
 alias zellij='zellij -l welcome'
 alias updown='yes | update && shutdown'
+alias startjellfin='sudo systemctl start jellyfin.service'
+alias startsshd='sudo systemctl start sshd.service'
+alias send='rsync -av'
 
 ## Edit Configs
 # Edit this .zshrc file
@@ -29,6 +32,10 @@ alias estar='cd ~/.config/; nvim starship.toml; cd "$OLDPWD"'
 alias ekitty='cd ~/.config/kitty/; nvim kitty.conf; cd "$OLDPWD"' 
 # Edit waybar config
 alias ewaybar='cd ~/.config/hypr/waybar/config.ini; nvim .; cd "$OLDPWD"' 
+# Edit ssh config
+alias elssh='$EDITOR ~/.ssh/config' 
+# Edit ssh config
+alias essh='sudoedit /etc/ssh/sshd_config' 
 
 ## Other edits
 # Edit scripts in local bin
