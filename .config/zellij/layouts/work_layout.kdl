@@ -22,6 +22,8 @@ layout {
       }
     }
     tab name="Shell"{
-      pane 
+      pane {
+        cwd "~" 
+        }
     }
   }
