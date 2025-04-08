@@ -37,3 +37,4 @@ export CHROME_EXECUTABLE=/usr/bin/chromium
 # export DISPLAY=:1
 # For Dotfiles Manager
 export DOTFILES_DIR=/home/zaiquiri/dotfiles
+. "$HOME/.cargo/env"

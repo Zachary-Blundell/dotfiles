@@ -580,9 +580,6 @@ if [ -d ~/.config/zsh/plugins ]; then
   # Use history substring search
   source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 fi
-# Use fzf
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
