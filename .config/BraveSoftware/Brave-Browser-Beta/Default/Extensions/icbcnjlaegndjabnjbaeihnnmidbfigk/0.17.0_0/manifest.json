@@ -1,0 +1,64 @@
+{
+   "action": {
+      "default_icon": {
+         "34": "icon-34.png"
+      },
+      "default_popup": "src/pages/popup/index.html"
+   },
+   "background": {
+      "service_worker": "service-worker-loader.js",
+      "type": "module"
+   },
+   "commands": {
+      "merge-all": {
+         "description": "Send all open tabs to Supatabs.",
+         "suggested_key": {
+            "default": "Alt+A",
+            "mac": "Alt+A"
+         }
+      },
+      "merge-left": {
+         "description": "Send all open tabs to the left to Supatabs.",
+         "suggested_key": {
+            "default": "Alt+L",
+            "mac": "Alt+L"
+         }
+      },
+      "merge-right": {
+         "description": "Send all open tabs to the right to Supatabs.",
+         "suggested_key": {
+            "default": "Alt+R",
+            "mac": "Alt+R"
+         }
+      },
+      "merge-selected": {
+         "description": "Send selected tabs to Supatabs."
+      },
+      "open-app-tab": {
+         "description": "Open or focus Supatabs.",
+         "suggested_key": {
+            "default": "Alt+O",
+            "mac": "Alt+O"
+         }
+      }
+   },
+   "default_locale": "en",
+   "description": "__MSG_ext_description__",
+   "icons": {
+      "128": "icon-128.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyZUJrkpms3ICWYjNNeBWKWqO+pXfzQSORXmQl0IhOVuRmj8tGqlG9GRR59aJnTNlGYwEbvdsZgoXt2JII/y7yiK6je78ykvOBuZbzkHZ203iAzUHO7mIPXtXp/QXKdxlIL3bc73wf4TyF4BeidmVxb6IQFwGVDG4MDBpgCrELMWco4721nI546pmlJJzPUoD3+gPWzZrs2rhz2BcAuPNo1rnzPwHoaYimw7a+8/8F7WsJNI4K/r//jF/egAH6cxGixjYV5YmLbUOvNzA+M3HDHQXkXVMLhsdcO0uzWNzKLURlWL9oSRa1GYjSGIABFvafDFVkr3ZaAGpzXxme/0azQIDAQAB",
+   "manifest_version": 3,
+   "name": "__MSG_ext_name__",
+   "options_ui": {
+      "page": "src/pages/options/index.html"
+   },
+   "permissions": [ "tabs", "storage", "contextMenus", "tabGroups" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "0.17.0",
+   "web_accessible_resources": [ {
+      "matches": [  ],
+      "resources": [ "icon-128.png", "icon-34.png" ],
+      "use_dynamic_url": false
+   } ]
+}
