@@ -21,6 +21,11 @@ layout {
         //close_on_exit true
       }
     }
+    tab name="SSH"{
+      pane {
+        cwd "~" 
+        }
+    }
     tab name="Shell"{
       pane {
         cwd "~" 
