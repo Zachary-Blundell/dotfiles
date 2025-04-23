@@ -35,6 +35,3 @@ done
 if [ -f ~/.bashrc_custom ]; then
     source ~/.bashrc_custom
 fi
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/home/zaiquiri/.lmstudio/bin"

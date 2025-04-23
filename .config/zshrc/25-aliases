@@ -2,21 +2,7 @@
 # ALIASES
 # -----------------------------------------------------
 
-# -----------------------------------------------------
-# General
-# -----------------------------------------------------
-alias nf='fastfetch'
-alias pf='fastfetch'
-alias ff='fastfetch'
-alias shutdown='systemctl poweroff'
-alias ts='~/.config/ml4w/scripts/snapshot.sh'
-alias wifi='nmtui'
-alias cleanup='~/.config/ml4w/scripts/cleanup.sh'
-
 ## Shortcuts
-alias bibites='cd ~/bibites/ && ./The\ Bibites.x86_64 -force-vulkan &'
-alias coding='cd ~/Code/myProjects/'
-alias dvcf='cd ~/Code/Defiez-votre-cerveau/'
 alias dvc='cd ~/Code/Defiez-votre-cerveau/dvc/; nvim'
 alias work='zellij --layout=work_layout'
 alias zn='zellij --layout=note_layout'
@@ -48,9 +34,28 @@ alias ewaybar='cd ~/.config/hypr/waybar/config.ini; nvim .; cd "$OLDPWD"'
 ## Other edits
 # Edit scripts in local bin
 alias escripts='cd ~/.local/bin/; nvim .; cd "$OLDPWD"' 
-# alias ebackup='cd ~/Code/my-dotfiles/; nvim .; cd "$OLDPWD"' 
 
-## Git
+# -----------------------------------------------------
+# General
+# -----------------------------------------------------
+alias nf='fastfetch'
+alias pf='fastfetch'
+alias ff='fastfetch'
+alias shutdown='systemctl poweroff'
+alias ts='~/.config/ml4w/scripts/snapshot.sh'
+alias wifi='nmtui'
+alias cleanup='~/.config/ml4w/scripts/cleanup.sh'
+alias please='sudo'
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+# alias to show the date
+alias da='date "+%Y-%m-%d %A %T %Z"'
+
+
+# -----------------------------------------------------
+# Git
+# -----------------------------------------------------
 alias gk='git clone'
 alias gs='git status'
 alias gd='git diff | less'
@@ -62,18 +67,10 @@ alias gP='git push'
 alias gnb='git checkout -b' #new branch
 alias gcb="git checkout"    #change branch
 alias grh="git reset --hard"
-gcom() {
-	git commit -m "$1"
-}
-lazyg() {
-	git add .
-	git commit -m "$1"
-	git push
-}
-# List amount of -git packages
-alias gitpkg='pacman -Q | grep -i "\-git" | wc -l' 
 
+# -----------------------------------------------------
 # Change directory aliases
+# -----------------------------------------------------
 alias cd='z'
 alias cd..='cd ..'
 alias ..='cd ..'
@@ -84,7 +81,9 @@ alias ......='cd ../../../../..'
 # cd into the old directory
 alias bd='cd "$OLDPWD"'
 
+# -----------------------------------------------------
 # Chmod alias commands
+# -----------------------------------------------------
 alias mx='chmod a+x'
 alias 000='chmod -R 000'
 alias 644='chmod -R 644'
@@ -92,86 +91,17 @@ alias 666='chmod -R 666'
 alias 755='chmod -R 755'
 alias 777='chmod -R 777'
 
+# -----------------------------------------------------
 # Editor stuff
-alias vim='nvim'
-alias vi='nvim'
-# alias v='nvim .'
-alias l='nvim .'
-alias n='nvim'
-alias sn='sudo nvim'
+# -----------------------------------------------------
+alias vim='$EDITOR'
+alias vi='$EDITOR'
+alias v='$EDITOR .'
+alias l='$EDITOR .'
+alias n='$EDITOR'
+alias sn='sudoedit'
 # fuzzy find a file and open with nvim
 alias nf='nvim $(fzf)'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# alias to show the date
-alias da='date "+%Y-%m-%d %A %T %Z"'
-
-alias please='sudo'
-alias tb='nc termbin.com 9999'
-alias helpme='cht.sh --shell'
-alias pacdiff='sudo -H DIFFPROG=meld pacdiff'
-## Flutter
-alias frun='flutter run'
-alias fget='flutter pub get'
-alias fadd='flutter pub add'
-alias fbuild='flutter build'
-alias fup='flutter pub upgrade'
-alias fdoc='flutter doctor'
-alias fclean='flutter clean'
-alias fgen='flutter gen-l10n'
-alias fcreate='flutter create .'
-alias fweb='flutter run -d chrome'
-
-alias freset='rm build && fcreate && fclean && fgen && frun'
-###-begin-flutter-completion-###
-if type complete &>/dev/null; then
-  __flutter_completion() {
-    local si="$IFS"
-    IFS=$'\n' COMPREPLY=($(COMP_CWORD="$COMP_CWORD" \
-                           COMP_LINE="$COMP_LINE" \
-                           COMP_POINT="$COMP_POINT" \
-                           flutter completion -- "${COMP_WORDS[@]}" \
-                           2>/dev/null)) || return $?
-    IFS="$si"
-  }
-  complete -F __flutter_completion flutter
-elif type compdef &>/dev/null; then
-  __flutter_completion() {
-    si=$IFS
-    compadd -- $(COMP_CWORD=$((CURRENT-1)) \
-                 COMP_LINE=$BUFFER \
-                 COMP_POINT=0 \
-                 flutter completion -- "${words[@]}" \
-                 2>/dev/null)
-    IFS=$si
-  }
-  compdef __flutter_completion flutter
-elif type compctl &>/dev/null; then
-  __flutter_completion() {
-    local cword line point words si
-    read -Ac words
-    read -cn cword
-    let cword-=1
-    read -l line
-    read -ln point
-    si="$IFS"
-    IFS=$'\n' reply=($(COMP_CWORD="$cword" \
-                       COMP_LINE="$line" \
-                       COMP_POINT="$point" \
-                       flutter completion -- "${words[@]}" \
-                       2>/dev/null)) || return $?
-    IFS="$si"
-  }
-  compctl -K __flutter_completion flutter
-fi
-###-end-flutter-completion-###
-
-#
-# # Cleanup orphaned packages
-# alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
 
 # -------------------------------------------------------
 # BETTER COMMANDS
@@ -248,13 +178,6 @@ alias ml4w-qtile-diagnosis='~/.config/ml4w/qtile/scripts/diagnosis.sh'
 alias ml4w-update='~/.config/ml4w/update.sh'
 
 # -----------------------------------------------------
-# Window Managers
-# -----------------------------------------------------
-
-alias Qtile='startx'
-# Hyprland with Hyprland
-
-# -----------------------------------------------------
 # Scripts
 # -----------------------------------------------------
 alias ascii='~/.config/ml4w/scripts/figlet.sh'
@@ -264,9 +187,58 @@ alias ascii='~/.config/ml4w/scripts/figlet.sh'
 # -----------------------------------------------------
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 
-# -----------------------------------------------------
-# Qtile
-# -----------------------------------------------------
-alias res1='xrandr --output DisplayPort-0 --mode 2560x1440 --rate 120'
-alias res2='xrandr --output DisplayPort-0 --mode 1920x1080 --rate 120'
-alias setkb='setxkbmap de;echo "Keyboard set back to de."'
+## Flutter
+alias frun='flutter run'
+alias fget='flutter pub get'
+alias fadd='flutter pub add'
+alias fbuild='flutter build'
+alias fup='flutter pub upgrade'
+alias fdoc='flutter doctor'
+alias fclean='flutter clean'
+alias fgen='flutter gen-l10n'
+alias fcreate='flutter create .'
+alias fweb='flutter run -d chrome'
+
+alias freset='rm build && fcreate && fclean && fgen && frun'
+###-begin-flutter-completion-###
+if type complete &>/dev/null; then
+  __flutter_completion() {
+    local si="$IFS"
+    IFS=$'\n' COMPREPLY=($(COMP_CWORD="$COMP_CWORD" \
+                           COMP_LINE="$COMP_LINE" \
+                           COMP_POINT="$COMP_POINT" \
+                           flutter completion -- "${COMP_WORDS[@]}" \
+                           2>/dev/null)) || return $?
+    IFS="$si"
+  }
+  complete -F __flutter_completion flutter
+elif type compdef &>/dev/null; then
+  __flutter_completion() {
+    si=$IFS
+    compadd -- $(COMP_CWORD=$((CURRENT-1)) \
+                 COMP_LINE=$BUFFER \
+                 COMP_POINT=0 \
+                 flutter completion -- "${words[@]}" \
+                 2>/dev/null)
+    IFS=$si
+  }
+  compdef __flutter_completion flutter
+elif type compctl &>/dev/null; then
+  __flutter_completion() {
+    local cword line point words si
+    read -Ac words
+    read -cn cword
+    let cword-=1
+    read -l line
+    read -ln point
+    si="$IFS"
+    IFS=$'\n' reply=($(COMP_CWORD="$cword" \
+                       COMP_LINE="$line" \
+                       COMP_POINT="$point" \
+                       flutter completion -- "${words[@]}" \
+                       2>/dev/null)) || return $?
+    IFS="$si"
+  }
+  compctl -K __flutter_completion flutter
+fi
+###-end-flutter-completion-###

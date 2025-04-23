@@ -29,8 +29,3 @@ keymap("v", ">", ">gv")
 -- Flutter --
 keymap("n", "<leader>r", ":FlutterRestart<CR>")
 keymap("n", "<leader>R", ":FlutterRun<CR>")
-
--- Dashboard --
-keymap({ "n" }, "<leader>;", ":Dashboard<CR>", { desc = "Open the Dashboard" })
-
---vim.keymap.del('n', <leader>w)
