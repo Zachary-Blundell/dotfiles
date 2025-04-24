@@ -11,29 +11,28 @@ alias zellij='zellij -l welcome'
 alias updown='yes | update && shutdown'
 alias update='sudo pacman -Syu'
 alias essh='sudoedit /etc/ssh/sshd_config && sudo systemctl restart sshd'
+alias startsshd='sudo systemctl start sshd.service'
+alias send='rsync -av'
 
 ## Edit Configs
 # Edit this .zshrc file
-alias ezsh='$EDITOR ~/.config/zshrc; source ~/.zshrc'
-alias ez='$EDITOR ~/.config/zshrc; source ~/.zshrc'
+alias ezsh='goedit $HOME/.config/zshrc; source ~/.zshrc'
 alias rzsh='source ~/.zshrc'
 # Edit hyprland config
-alias ehypr='$EDITOR ~/.config/hypr/conf/' 
+alias ehypr='goedit ~/.config/hypr/conf/' 
 # Edit tmux
 # alias etmux='cd ~/.config/tmux/; nvim .; cd "$OLDPWD"' 
 # Edit zellij
-alias econfigs='$EDITOR ~/.config/' 
-alias ezellij='$EDITOR ~/.config/zellij/' 
-# Edit starship
-# alias estar='cd ~/.config/; nvim starship.toml; cd "$OLDPWD"' 
+alias econfigs='goedit ~/.config/' 
+alias ezellij='goedit ~/.config/zellij/' 
 # Edit kitty
-alias ekitty='cd ~/.config/kitty/; nvim kitty.conf; cd "$OLDPWD"' 
+alias ekitty='goedit ~/.config/kitty/' 
 # Edit waybar config
-alias ewaybar='cd ~/.config/hypr/waybar/config.ini; nvim .; cd "$OLDPWD"' 
+# alias ewaybar='cd ~/.config/hypr/waybar/config.ini; nvim .; cd "$OLDPWD"' 
 
 ## Other edits
 # Edit scripts in local bin
-alias escripts='cd ~/.local/bin/; nvim .; cd "$OLDPWD"' 
+alias escripts='goedit ~/.local/bin/' 
 
 # -----------------------------------------------------
 # General
@@ -68,18 +67,6 @@ alias gnb='git checkout -b' #new branch
 alias gcb="git checkout"    #change branch
 alias grh="git reset --hard"
 
-# -----------------------------------------------------
-# Change directory aliases
-# -----------------------------------------------------
-alias cd='z'
-alias cd..='cd ..'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
-alias ......='cd ../../../../..'
-# cd into the old directory
-alias bd='cd "$OLDPWD"'
 
 # -----------------------------------------------------
 # Chmod alias commands
@@ -115,6 +102,17 @@ alias lt='exa -aT --color=always --group-directories-first --icons' # tree listi
 alias l.='exa -ald --color=always --group-directories-first --icons .*' # show only dotfiles
 alias listdir="ls -d */ > list"
 
+# Change directory aliases
+alias cd='z'
+alias cd..='cd ..'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+
+# cd into the old directory
+alias bd='cd "$OLDPWD"'
 # Better versions
 alias cp='cp -i'
 alias mv='mv -i'
@@ -135,6 +133,21 @@ alias grep='ugrep --color=auto'
 alias fgrep='ugrep -F --color=auto'
 alias egrep='ugrep -E --color=auto'
 alias hw='hwinfo --short'                          # Hardware Info
+
+#pacman
+alias pacman="sudo pacman --color auto"
+alias update="sudo pacman -Syyu"
+alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'  # Cleanup orphaned packages
+alias upd="sudo pacman -Syyu"
+alias sps='sudo pacman -S'
+alias spf='pacman -Ss'
+alias spr='sudo pacman -R'
+alias spra='sudo pacman -Rns'
+alias sprs='sudo pacman -Rs'
+alias sprdd='sudo pacman -Rdd'
+alias spqo='sudo pacman -Qo'
+alias spsii='sudo pacman -Sii'
+alias pacmanunlock="sudo rm /var/lib/pacman/db.lck"
 
 # Remove a directory and all files
 alias rmd='/bin/rm  --recursive --force --verbose '
@@ -185,7 +198,10 @@ alias ascii='~/.config/ml4w/scripts/figlet.sh'
 # -----------------------------------------------------
 # System
 # -----------------------------------------------------
-alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+
+#grub update
+alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
+alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 ## Flutter
 alias frun='flutter run'
