@@ -27,7 +27,6 @@ ex () {
 }
 
 goedit() {
-  echo "Voici le path: $1"
   # if it is a directory
   if [ -d "$1" ]; then
     cd "$1"
@@ -36,5 +35,4 @@ goedit() {
   else # if it is a file
     $EDITOR "$1"
   fi
-
 }
