@@ -17,8 +17,7 @@ layout {
     }
     tab name="Code"{
       pane {
-        cwd "~/Code/" 
-        command "nvim"
+        command "openProject"
         // close_on_exit true
         }
     }
