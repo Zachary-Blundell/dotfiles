@@ -9,15 +9,20 @@ alias zn='zellij --layout=note_layout'
 alias coding='zellij --layout=coding_layout'
 alias zellij='zellij -l welcome'
 alias updown='yes | update && shutdown'
-alias update='sudo pacman -Syu'
-alias essh='sudoedit /etc/ssh/sshd_config && sudo systemctl restart sshd'
 alias startsshd='sudo systemctl start sshd.service'
 alias send='rsync -av'
+alias :q='exit'
+
+
+## Shortcuts
 
 ## Edit Configs
 # Edit this .zshrc file
 alias ezsh='goedit $HOME/.config/zshrc; source ~/.zshrc'
 alias rzsh='source ~/.zshrc'
+## ssh
+alias essh='goedit $HOME/.ssh/config'
+alias esshconf='sudoedit /etc/ssh/sshd_config && sudo systemctl restart sshd'
 # Edit hyprland config
 alias ehypr='goedit ~/.config/hypr/conf/' 
 # Edit tmux
@@ -81,17 +86,15 @@ alias 777='chmod -R 777'
 # -----------------------------------------------------
 # Editor stuff
 # -----------------------------------------------------
-alias vim='$EDITOR'
-alias vi='$EDITOR'
 alias v='$EDITOR .'
-alias l='$EDITOR .'
+alias sv='sudoedit'
+alias vi='$EDITOR'
+alias vim='$EDITOR'
 alias n='$EDITOR'
 alias sn='sudoedit'
-# fuzzy find a file and open with nvim
-alias nf='nvim $(fzf)'
 
 # -------------------------------------------------------
-# BETTER COMMANDS
+# BETTER COMMANDS / SHORTCUTS
 # -------------------------------------------------------
 
 # Replace ls with exa
@@ -103,6 +106,7 @@ alias l.='exa -ald --color=always --group-directories-first --icons .*' # show o
 alias listdir="ls -d */ > list"
 
 # Change directory aliases
+# Replace cd with zoxide
 alias cd='z'
 alias cd..='cd ..'
 alias ..='cd ..'
@@ -111,18 +115,15 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
-# cd into the old directory
-alias bd='cd "$OLDPWD"'
 # Better versions
 alias cp='cp -i'
+# alias cat='echo "cat is acting weird"'
 alias mv='mv -i'
 alias rm='trash -v'
 alias mkdir='mkdir -p'
 alias ps='ps auxf'
 alias ping='ping -c 10'
 alias less='less -R'
-alias c='clear'
-alias apt-get='sudo apt-get'
 alias multitail='multitail --no-repeat -c'
 alias freshclam='sudo freshclam'
 alias ip='ip -color'
@@ -132,11 +133,16 @@ alias vdir='vdir --color=auto'
 alias grep='ugrep --color=auto'
 alias fgrep='ugrep -F --color=auto'
 alias egrep='ugrep -E --color=auto'
-alias hw='hwinfo --short'                          # Hardware Info
 
-#pacman
+# Shortcuts
+alias hw='hwinfo --short'                     # Hardware Info
+alias c='clear'
+alias bd='cd "$OLDPWD"'                       # cd into the old directory
+
+
+# Pacman
 alias pacman="sudo pacman --color auto"
-alias update="sudo pacman -Syyu"
+alias update="yes | sudo pacman -Syyu"
 alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'  # Cleanup orphaned packages
 alias upd="sudo pacman -Syyu"
 alias sps='sudo pacman -S'
@@ -148,6 +154,17 @@ alias sprdd='sudo pacman -Rdd'
 alias spqo='sudo pacman -Qo'
 alias spsii='sudo pacman -Sii'
 alias pacmanunlock="sudo rm /var/lib/pacman/db.lck"
+alias gitpkg='pacman -Q | grep -i "\-git" | wc -l' # List amount of -git packages
+
+# Aur
+alias yay='yay --answerclean n --answerdiff n'
+alias sas='yay -S'
+alias parus='sudo pacman -S'
+alias paruf='pacman -Ss'
+alias parur='sudo pacman -R'
+alias parura='sudo pacman -Rns'
+    
+alias saf='yay -Ss'
 
 # Remove a directory and all files
 alias rmd='/bin/rm  --recursive --force --verbose '
