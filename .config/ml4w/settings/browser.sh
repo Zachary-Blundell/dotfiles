@@ -1,1 +1,1 @@
-brave-browser-beta
+brave
