@@ -9,6 +9,7 @@ return {
 
         explorer = {
           hidden = true,
+          follow_file = false,
           ignored = true,
           exclude = { "node_modules", ".git" },
         },

@@ -12,10 +12,18 @@ return {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
-    -- build = function()
-    --   vim.fn["mkdp#util#install"]()
-    -- end,
-    -- build = "npm install",
+    config = function()
+      vim.cmd([[
+        " ---------------------------------------------------------------------------
+        " Markdown-preview browser opener (Vim-script, exactly like the README) ------
+        " ---------------------------------------------------------------------------
+
+        function! OpenMarkdownPreview(url) abort
+          silent execute '!brave --new-window ' . a:url
+        endfunction
+        let g:mkdp_browserfunc = 'OpenMarkdownPreview'
+        ]])
+    end,
     keys = {
       {
         "<leader>cp",
