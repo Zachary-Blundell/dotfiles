@@ -36,7 +36,7 @@ zinit snippet OMZP::bun # sets up completion for Bun.
 zinit snippet OMZP::eza
 zinit snippet OMZP::git
 zinit snippet OMZP::rsync
-zinit snippet OMZP::ssh
+# zinit snippet OMZP::ssh
 zinit snippet OMZP::tldr
 # zinit snippet OMZP::command-not-found
 
