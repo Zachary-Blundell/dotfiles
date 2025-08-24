@@ -36,3 +36,8 @@ goedit() {
     $EDITOR "$1"
   fi
 }
+
+findalias() {
+    alias | grep "$@"
+}
+
