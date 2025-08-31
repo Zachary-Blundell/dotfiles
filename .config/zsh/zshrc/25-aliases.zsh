@@ -18,8 +18,8 @@ alias :q='exit'
 
 ## Edit Configs
 # Edit this .zshrc file
-alias ezsh='goedit $HOME/.config/zshrc; source ~/.zshrc'
-alias rzsh='source ~/.zshrc'
+alias ezsh='goedit $ZDOTDIR'
+alias rzsh='source $ZDOTDIR/.zshrc'
 ## ssh
 alias essh='goedit $HOME/.ssh/config'
 alias esshconf='sudoedit /etc/ssh/sshd_config && sudo systemctl restart sshd'

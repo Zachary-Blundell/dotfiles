@@ -82,9 +82,3 @@ zstyle ':omz:plugins:eza' 'icons' yes
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
-
-
-# -----------------------------------------------------
-# Exports
-# -----------------------------------------------------
-export EDITOR=nvim

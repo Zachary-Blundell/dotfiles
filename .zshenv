@@ -1,19 +1,11 @@
 #!/usr/bin/env zsh
 
-####################
-## Bun
-####################
-# bun completions
-[ -s "/home/zaiquiri/.bun/_bun" ] && source "/home/zaiquiri/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export ZDOTDIR="${ZDOTDIR:-$XDG_CONFIG_HOME/zsh}"
 
 
-####################
-## Node Version Manager
-####################
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if ! source $ZDOTDIR/.zshenv; then
+    echo "FATAL Error: Could not source $ZDOTDIR/.zshenv"
+    return 1
+fi
+
