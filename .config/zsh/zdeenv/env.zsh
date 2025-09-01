@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 # Shell Environment Initialization Script
+# If users used UWSM, uwsm will override any variables set anywhere in your shell configurations
 
 # Basic PATH prepending (user local bin)
 PATH="$HOME/.local/bin:$PATH"
