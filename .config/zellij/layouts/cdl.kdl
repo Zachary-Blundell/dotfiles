@@ -1,0 +1,28 @@
+layout {
+    default_tab_template {
+        // the default zellij tab-bar and status bar plugins
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        children
+        pane size=1 borderless=true {
+          plugin location="status-bar"
+        }
+    }
+    tab name="Docs"{
+        pane {
+          cwd "~/Projects/ConvergENS/01_Docs/" 
+          }
+    }
+    tab name="Code"{
+      pane {
+        cwd "~/Projects/ConvergENS/02_Code/ConvergENS/" 
+        }
+    }
+    tab name="Shell"{
+      pane {
+        cwd "~/Projects/ConvergENS/02_Code/ConvergENS/" 
+        }
+    }
+  }
+
