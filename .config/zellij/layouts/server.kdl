@@ -12,6 +12,8 @@ layout {
     tab name="Server"{
       pane {
         cwd "~/Projects/ConvergENS/02_Code/ConvergENS/" 
+        command "bun"
+        args "run" "dev"
         }
     }
   }
