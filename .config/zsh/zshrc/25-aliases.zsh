@@ -86,7 +86,7 @@ alias v='$EDITOR .'
 alias sv='sudoedit'
 alias vi='$EDITOR'
 alias vim='$EDITOR'
-alias n='$EDITOR'
+alias n='$EDITOR .'
 alias sn='sudoedit'
 
 # -------------------------------------------------------

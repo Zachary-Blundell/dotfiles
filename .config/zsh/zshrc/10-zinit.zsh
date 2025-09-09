@@ -38,7 +38,6 @@ zinit snippet OMZP::archlinux
 zinit snippet OMZP::bun # sets up completion for Bun.
 # zinit snippet OMZP::cp
 zinit snippet OMZP::eza
-zinit snippet OMZP::git
 zinit snippet OMZP::rsync
 # zinit snippet OMZP::ssh
 zinit snippet OMZP::tldr
@@ -81,4 +80,3 @@ zstyle ':omz:plugins:eza' 'icons' yes
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-
