@@ -4,6 +4,7 @@
 
 ## Shortcuts
 alias dvc='cd ~/Code/Defiez-votre-cerveau/dvc/; nvim'
+alias cdl='zellij --layout=cdl'
 alias work='zellij --layout=work_layout'
 alias zn='zellij --layout=note_layout'
 alias coding='zellij --layout=coding_layout'
@@ -13,6 +14,7 @@ alias startsshd='sudo systemctl start sshd.service'
 alias send='rsync -av'
 alias :q='exit'
 
+alias goto='nordvpn c'
 
 ## Shortcuts
 
@@ -24,9 +26,7 @@ alias rzsh='source $ZDOTDIR/.zshrc'
 alias essh='goedit $HOME/.ssh/config'
 alias esshconf='sudoedit /etc/ssh/sshd_config && sudo systemctl restart sshd'
 # Edit hyprland config
-alias ehypr='goedit ~/.config/hypr/conf/' 
-# Edit tmux
-# alias etmux='cd ~/.config/tmux/; nvim .; cd "$OLDPWD"' 
+alias ehypr='goedit ~/.config/hypr/' 
 # Edit zellij
 alias econfigs='goedit ~/.config/' 
 alias ezellij='goedit ~/.config/zellij/' 
@@ -52,23 +52,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # alias to show the date
 alias da='date "+%Y-%m-%d %A %T %Z"'
 
-
-# -----------------------------------------------------
-# Git replaced by git zinit plugin
-# -----------------------------------------------------
-# alias gk='git clone'
-# alias gs='git status'
-# alias gd='git diff | less'
-# alias ga='git add'
-# alias gaa='git add .'
-# alias gc="git commit -m "
-# alias gp='git pull'
-# alias gP='git push'
-# alias gnb='git checkout -b' #new branch
-# alias gcb="git checkout"    #change branch
-# alias grh="git reset --hard"
-
-
 # -----------------------------------------------------
 # Chmod alias commands
 # -----------------------------------------------------
@@ -89,18 +72,24 @@ alias vim='$EDITOR'
 alias n='$EDITOR .'
 alias sn='sudoedit'
 
+# -----------------------------------------------------
+# Git replaced by git zinit plugin
+# -----------------------------------------------------
+# alias gk='git clone'
+# alias gs='git status'
+# alias gd='git diff | less'
+# alias ga='git add'
+# alias gaa='git add .'
+# alias gc="git commit -m "
+# alias gp='git pull'
+# alias gP='git push'
+# alias gnb='git checkout -b' #new branch
+# alias gcb="git checkout"    #change branch
+# alias grh="git reset --hard"
+
 # -------------------------------------------------------
 # BETTER COMMANDS / SHORTCUTS
 # -------------------------------------------------------
-
-# Replace ls with exa 
-# Replace with the zinit exa plugin
-# alias ls='exa --color=always --group-directories-first --icons' # preferred listing
-# alias la='exa -la --color=always --group-directories-first --icons'  # all files and dirs
-# alias ll='exa -l --color=always --group-directories-first --icons'  # long format
-# alias lt='exa -aT --color=always --group-directories-first --icons' # tree listing
-# alias l.='exa -ald --color=always --group-directories-first --icons .*' # show only dotfiles
-# alias listdir="ls -d */ > list"
 
 # Change directory aliases
 # Replace cd with zoxide
@@ -133,6 +122,14 @@ alias hw='hwinfo --short'                     # Hardware Info
 alias c='clear'
 alias bd='cd "$OLDPWD"'                       # cd into the old directory
 
+# Replace ls with exa 
+# Replace with the zinit exa plugin
+# alias ls='exa --color=always --group-directories-first --icons' # preferred listing
+# alias la='exa -la --color=always --group-directories-first --icons'  # all files and dirs
+# alias ll='exa -l --color=always --group-directories-first --icons'  # long format
+# alias lt='exa -aT --color=always --group-directories-first --icons' # tree listing
+# alias l.='exa -ald --color=always --group-directories-first --icons .*' # show only dotfiles
+# alias listdir="ls -d */ > list"
 
 # Pacman
 # Replaced with zinit archlinux plugin

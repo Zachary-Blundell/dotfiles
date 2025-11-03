@@ -11,18 +11,29 @@ layout {
     }
     tab name="Docs"{
         pane {
-          cwd "~/Projects/ConvergENS/01_Docs/" 
+          cwd "~/Nextcloud/Projects/ConvergENS/Docs/" 
           }
     }
-    tab name="Code"{
+    tab name="Code" focus=true {
       pane {
-        cwd "~/Projects/ConvergENS/02_Code/ConvergENS/" 
+        cwd "~/Nextcloud/Projects/ConvergENS/Code/" 
+        command "nvim"
+        args "."
         }
     }
     tab name="Shell"{
       pane {
-        cwd "~/Projects/ConvergENS/02_Code/ConvergENS/" 
+        cwd "~/Nextcloud/Projects/ConvergENS/Code/" 
         }
+    }
+    tab name="Server"{
+      pane split_direction="vertical" {
+        pane{
+          cwd "~/Nextcloud/Projects/ConvergENS/Code/"
+          command "bun"
+          args "run" "dev"
+        } 
+      }
     }
   }
 
