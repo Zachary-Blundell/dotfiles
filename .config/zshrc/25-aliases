@@ -4,6 +4,7 @@
 
 ## Shortcuts
 alias dvc='cd ~/Code/Defiez-votre-cerveau/dvc/; nvim'
+alias cdl='zellij --layout=cdl'
 alias work='zellij --layout=work_layout'
 alias zn='zellij --layout=note_layout'
 alias coding='zellij --layout=coding_layout'
@@ -13,6 +14,8 @@ alias startsshd='sudo systemctl start sshd.service'
 alias send='rsync -av'
 alias :q='exit'
 
+alias home='sudo resolvconf -u && sudo wg-quick up home'
+alias homed='sudo wg-quick down home'
 
 ## Shortcuts
 
@@ -45,7 +48,7 @@ alias escripts='goedit ~/.local/bin/'
 alias nf='fastfetch'
 alias pf='fastfetch'
 alias ff='fastfetch'
-alias shutdown='systemctl poweroff'
+# alias shutdown='systemctl poweroff'
 alias ts='~/.config/ml4w/scripts/snapshot.sh'
 alias wifi='nmtui'
 alias cleanup='~/.config/ml4w/scripts/cleanup.sh'
@@ -90,7 +93,7 @@ alias v='$EDITOR .'
 alias sv='sudoedit'
 alias vi='$EDITOR'
 alias vim='$EDITOR'
-alias n='$EDITOR'
+alias n='$EDITOR .'
 alias sn='sudoedit'
 
 # -------------------------------------------------------

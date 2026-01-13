@@ -9,18 +9,26 @@ layout {
     //   plugin location="status-bar"
     // }
   }
+  tab name="Notes"{
+    pane {
+      command "note" 
+    }
+  }
   tab name="Shell"{
-    pane 
+    pane split_direction="vertical" {
+      // pane size="80%"
+      // pane size="20%"
+    }
   }
   tab name="Code"{
     pane {
       command "openProject"
     }
   }
-  tab name="Servers"{
-    pane split_direction="vertical" {
-      pane size="50%"
-      pane size="50%"
-    }
+  tab name="SSH"{
+    pane {
+      command "sconnect"
+    } 
   }
 }
+

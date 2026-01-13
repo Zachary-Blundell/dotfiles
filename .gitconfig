@@ -1,3 +1,5 @@
 [user]
 	email = zacharyblundell@live.com
 	name = Zachary
+[init]
+	defaultBranch = main

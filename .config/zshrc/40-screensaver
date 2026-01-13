@@ -1,0 +1,100 @@
+#TMOUT=$SCREENSAVER_IDLE
+#__screensaver_running=
+#
+#TRAPALRM() {
+#  [[ -o zle ]] && zle -I
+#  [[ -n $__screensaver_running ]] && return
+#  command -v asciiquarium >/dev/null || { print -r -- "asciiquarium not found"; return; }
+#
+#  __screensaver_running=1
+#  local _save_tmout=$TMOUT
+#  unset TMOUT
+#
+#  tput civis 2>/dev/null || :
+#  tput clear 2>/dev/null || :
+#
+#  (
+#    trap '' ALRM VTALRM
+#    # Size the `script` PTY to match the real terminal before launching
+#    exec script -qfec "stty rows $LINES cols $COLUMNS; exec asciiquarium" /dev/null
+#  )
+#
+#  tput clear 2>/dev/null || true
+#  tput cnorm 2>/dev/null || :
+#  tput sgr0 2>/dev/null || :
+#  [[ -o zle ]] && zle -I
+#
+#  TMOUT=$_save_tmout
+#  __screensaver_running=
+#}
+# # Start asciiquarium after 2 minutes of idle time at the prompt
+# SCREENSAVER_IDLE=10
+# TMOUT=$SCREENSAVER_IDLE
+#
+# # Guard so we don't re-enter while running
+# __screensaver_running=
+#
+# TRAPALRM() {
+#   # If the line editor is active, refresh cleanly to avoid garbling the prompt
+#   [[ -o zle ]] && zle -I   # safe in traps per zshzle(1)
+#
+#   [[ -n $__screensaver_running ]] && return
+#   command -v asciiquarium >/dev/null || { print -r -- "asciiquarium not found"; return; }
+#
+#   __screensaver_running=1
+#   local _save_tmout=$TMOUT
+#   unset TMOUT                 # don't re-trigger while the screensaver runs
+#
+#   # Hide cursor & clear the screen (best-effort)
+#   tput civis 2>/dev/null || true
+#   tput clear 2>/dev/null || true
+#
+#   # Run until you press q (or Ctrl-C)
+# ( 
+#   # Ignore both real- and virtual-time alarms
+#   trap '' ALRM VTALRM
+#
+#   # Clear any inherited one-shot or microsecond alarms before exec
+#   perl -e 'alarm 0; eval { require Time::HiRes; Time::HiRes::ualarm(0) }'
+#
+#   exec asciiquarium
+# )
+#   # asciiquarium
+#
+#   Restore terminal & prompt
+#   tput cnorm 2>/dev/null || true
+#   tput sgr0 2>/dev/null || true
+#   [[ -o zle ]] && zle -I
+#
+#   TMOUT=$_save_tmout         # re-arm idle timer
+#   __screensaver_running=
+# }
+# # #
+# # SCREENSAVER_IDLE=10
+# # TMOUT=$SCREENSAVER_IDLE
+# # __screensaver_running=
+# #
+# # TRAPALRM() {
+# #   [[ -o zle ]] && zle -I
+# #   [[ -n $__screensaver_running ]] && return
+# #   command -v asciiquarium >/dev/null || { print -r -- "asciiquarium not found"; return; }
+# #
+# #   __screensaver_running=1
+# #   local _save_tmout=$TMOUT
+# #   unset TMOUT
+# #
+# #   tput civis 2>/dev/null || :
+# #   tput clear 2>/dev/null || :
+# #
+# #   (
+# #     trap '' ALRM VTALRM
+# #     exec script -qfc asciiquarium /dev/null
+# #   )
+# #
+# #   tput cnorm 2>/dev/null || :
+# #   tput sgr0 2>/dev/null || :
+# #   [[ -o zle ]] && zle -I
+# #
+# #   TMOUT=$_save_tmout
+# #   __screensaver_running=
+# # }
