@@ -1,0 +1,1 @@
+/home/zaiquiri/.config/omarchy/current/theme/neovim.lua
