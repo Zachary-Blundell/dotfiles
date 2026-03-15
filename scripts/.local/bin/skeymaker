@@ -1,0 +1,296 @@
+#!/bin/bash
+#    __________ __  __   __ __              __  ___      __
+#   / ___/ ___// / / /  / //_/__  __  __   /  |/  /___ _/ /_____  _____
+#   \__ \\__ \/ /_/ /  / ,< / _ \/ / / /  / /|_/ / __ `/ //_/ _ \/ ___/
+#  ___/ /__/ / __  /  / /| /  __/ /_/ /  / /  / / /_/ / ,< /  __/ /
+# /____/____/_/ /_/  /_/ |_\___/\__, /  /_/  /_/\__,_/_/|_|\___/_/
+#                              /____/
+# ------------------------------------------------------------
+# Interactive helper to gather parameters for generating an SSH
+# Features
+#   • Collects: key name, comment, key type, optional passphrase
+#   • Optional clipboard copy of the public key
+#   • Optional creation of a matching entry in ~/.ssh/config
+#   • Optional testing using sconncet
+# ------------------------------------------------------------
+# Requirements:
+#   • gum (https://github.com/charmbracelet/gum)
+#   • ssh-keygen available in $PATH
+#   • One of: pbcopy, xclip, xsel, wl-copy   (for clipboard)
+# ------------------------------------------------------------
+
+set -euo pipefail
+
+# ----------------------------------------
+# Helper: styled error banner
+# ----------------------------------------
+err() {
+  gum style --foreground 1 "error: $1"
+}
+
+# ----------------------------------------
+# Helper: copy file contents to the clipboard (best‑effort)
+# ----------------------------------------
+copy_to_clipboard() {
+  local content_file="$1"
+  if command -v wl-copy >/dev/null 2>&1; then
+    <"$content_file" wl-copy && return 0
+  elif command -v pbcopy >/dev/null 2>&1; then
+    <"$content_file" pbcopy && return 0
+  elif command -v xclip >/dev/null 2>&1; then
+    <"$content_file" xclip -selection clipboard && return 0
+  elif command -v xsel >/dev/null 2>&1; then
+    <"$content_file" xsel --clipboard --input && return 0
+  fi
+  return 1 # no clipboard utility
+}
+
+main() {
+  clear
+
+  # ----------------------------------------
+  # Prompt: SSH key filename (loop until valid)
+  # ----------------------------------------
+  local key_name
+  while true; do
+    key_name=$(gum input \
+      --header "SSH Key Name" \
+      --placeholder "id_ed25519")
+
+    if [[ -z $key_name ]]; then
+      err "Key name cannot be empty"
+      continue
+    fi
+    if [[ $key_name == */* ]]; then
+      err "Key name must not contain '/'"
+      continue
+    fi
+    break
+  done
+
+  # ----------------------------------------
+  # Prompt: Key comment (loop until non‑empty)
+  # ----------------------------------------
+  local key_comment
+  while true; do
+    key_comment=$(gum input \
+      --header "Key Comment" \
+      --placeholder "you@example.com")
+
+    [[ -z $key_comment ]] && {
+      err "Key comment cannot be empty"
+      continue
+    }
+    break
+  done
+
+  # ----------------------------------------
+  # Prompt: Key type (choose, default rsa)
+  # ----------------------------------------
+  local key_type
+  key_type=$(gum choose \
+    --selected "rsa" \
+    dsa ecdsa ecdsa-sk ed25519 ed25519-sk rsa)
+
+  # ----------------------------------------
+  # Prompt: Optional passphrase
+  # ----------------------------------------
+  local key_passphrase="" passphrase_set="no"
+  if gum confirm "Protect the key with a passphrase?"; then
+    passphrase_set="yes"
+    while true; do
+      key_passphrase=$(gum input \
+        --password \
+        --header "Enter passphrase" \
+        --placeholder "passphrase")
+      [[ -z $key_passphrase ]] && {
+        err "Passphrase cannot be empty"
+        continue
+      }
+
+      local key_passphrase_confirm
+      key_passphrase_confirm=$(gum input \
+        --password \
+        --header "Confirm passphrase" \
+        --placeholder "re-enter passphrase")
+
+      [[ "$key_passphrase" != "$key_passphrase_confirm" ]] && {
+        err "Passphrases do not match"
+        continue
+      }
+      break
+    done
+  fi
+
+  # ----------------------------------------
+  # Paths & confirmation summary
+  # ----------------------------------------
+  local ssh_dir="$HOME/.ssh"
+  local key_path="$ssh_dir/$key_name"
+
+  while true; do
+    echo
+    gum style --border normal --padding "1 2" --margin "0 0 1 0" \
+      "🛠  Summary" \
+      "File       : $key_path" \
+      "Type       : $key_type" \
+      "Comment    : $key_comment" \
+      "Passphrase : $passphrase_set"
+
+    if gum confirm "Proceed with key generation?"; then
+      break
+    else
+      if gum confirm "Would you like to start over?"; then
+        main
+        return 0
+      else
+        echo "Cancelled."
+        exit 0
+      fi
+    fi
+  done
+
+  # Ensure ~/.ssh exists with proper perms
+  mkdir -p "$ssh_dir"
+  chmod 700 "$ssh_dir"
+
+  # ----------------------------------------
+  # Handle existing key name (loop until unique or overwrite)
+  # ----------------------------------------
+  while [[ -e $key_path || -e ${key_path}.pub ]]; do
+    gum style --foreground 3 "warning: $key_path already exists."
+    if gum confirm "Overwrite?"; then
+      rm -f "$key_path" "${key_path}.pub"
+      break
+    else
+      err "Please choose a different key name."
+      while true; do
+        key_name=$(gum input \
+          --header "SSH Key Name" \
+          --placeholder "id_ed25519")
+        if [[ -z $key_name ]]; then
+          err "Key name cannot be empty"
+          continue
+        fi
+        if [[ $key_name == */* ]]; then
+          err "Key name must not contain '/'"
+          continue
+        fi
+        key_path="$ssh_dir/$key_name"
+        break
+      done
+    fi
+  done
+
+  # ----------------------------------------
+  # Generate SSH key (spinner)
+  # ----------------------------------------
+  echo
+  if gum spin --spinner line --title "Generating SSH key" -- \
+    ssh-keygen -t "$key_type" -C "$key_comment" -f "$key_path" -N "$key_passphrase"; then
+
+    echo
+    gum style --border normal --padding "1 2" "✅  Key created:" "$key_path" "${key_path}.pub"
+
+    # Clipboard copy option
+    if gum confirm "Copy public key to clipboard?"; then
+      if copy_to_clipboard "${key_path}.pub"; then
+        gum style --foreground 2 "Public key copied to clipboard."
+      else
+        gum style --foreground 3 "No clipboard utility found. Showing key below:"
+        echo
+        cat "${key_path}.pub"
+      fi
+    fi
+
+    # ----------------------------------------
+    # Offer to create ~/.ssh/config entry
+    # ----------------------------------------
+    local added_alias="" # will hold alias if we add one
+    if gum confirm "Add an entry to ~/.ssh/config for this key?"; then
+      local config_file="$ssh_dir/config"
+      touch "$config_file"
+      chmod 600 "$config_file"
+
+      # Gather alias(loop & validate alias uniqueness), hostname, user, and port
+      local host_alias host_name host_user host_port
+      while true; do
+        host_alias=$(gum input --header "Host alias (e.g. my-server)" --placeholder "my-server")
+        [[ -z $host_alias ]] && {
+          err "Alias cannot be empty"
+          continue
+        }
+        if grep -qE "^[Hh]ost[[:space:]]+$host_alias( |$)" "$config_file"; then
+          err "Alias '$host_alias' already exists in $config_file"
+          continue
+        fi
+        break
+      done
+
+      host_name=$(gum input --header "HostName (domain or IP)" --placeholder "example.com")
+      [[ -z $host_name ]] && host_name="example.com"
+      host_user=$(gum input --header "User" --placeholder "$USER" --value "$USER")
+      [[ -z $host_user ]] && host_user="$USER"
+
+      # Prompt for port (default 22, numeric validation)
+      while true; do
+        host_port=$(gum input --header "Port" --placeholder "22" --value "22")
+        [[ -z $host_port ]] && host_port="22"
+        if [[ $host_port =~ ^[0-9]+$ ]] && ((host_port >= 1 && host_port <= 65535)); then
+          break
+        else
+          err "Port must be a number between 1 and 65535"
+        fi
+      done
+
+      # Append entry
+      {
+        echo -e "\nHost $host_alias"
+        echo "  HostName $host_name"
+        echo "  User $host_user"
+        echo "  Port $host_port"
+        echo "  IdentityFile $key_path"
+      } >>"$config_file"
+
+      gum style --foreground 2 "Added entry for '$host_alias' to $config_file"
+      added_alias="$host_alias"
+    fi
+
+    # ----------------------------------------
+    # Offer to send the public key to the server using the config entry
+    # ----------------------------------------
+    if [[ -n $added_alias ]] && gum confirm "Send the public key to '$added_alias'?"; then
+      if command -v ssh-copy-id >/dev/null 2>&1; then
+        if gum spin --spinner line --title "Sending key to $added_alias" -- \
+          ssh-copy-id -i "${key_path}.pub" "$added_alias"; then
+          gum style --foreground 2 "Key copied to $added_alias via ssh-copy-id."
+        else
+          err "ssh-copy-id failed. You can try manually with:\ncat ${key_path}.pub | ssh $added_alias 'mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys'"
+        fi
+      else
+        err "ssh-copy-id not found. Attempting manual copy."
+        if gum spin --spinner line --title "Sending key to $added_alias" -- \
+          sh -c "cat ${key_path}.pub | ssh $added_alias 'mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys'"; then
+          gum style --foreground 2 "Key copied to $added_alias using manual method."
+        else
+          err "Failed to copy key using manual method."
+        fi
+      fi
+    fi
+
+    # ----------------------------------------
+    # Offer to test the connection using sconnect
+    # ----------------------------------------
+    if command -v sconnect >/dev/null 2>&1; then
+      if gum confirm "Test the connection now using 'sconnect'?"; then
+        sconnect
+      fi
+    else
+      gum style --foreground 3 "Note: 'sconnect' script not found in PATH; skipping connection test."
+    fi
+  else
+    err "ssh-keygen failed. Please try again."
+  fi
+}
+
+main "$@"
