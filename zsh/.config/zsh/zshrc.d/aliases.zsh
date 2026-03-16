@@ -36,6 +36,8 @@ alias ekitty='goedit ~/.config/kitty/'
 alias ewaybar='goedit ~/.config/waybar/'
 # 'cd ~/.config/hypr/waybar/config.ini; nvim .; cd "$OLDPWD"' 
 alias evim='goedit ~/.config/nvim/'
+alias edots='goedit ~/dotfiles/'
+
 
 ## Other edits
 # Edit scripts in local bin
