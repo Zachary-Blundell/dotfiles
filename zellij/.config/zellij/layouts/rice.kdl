@@ -1,0 +1,29 @@
+layout {
+    default_tab_template {
+        // the default zellij tab-bar and status bar plugins
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        children
+    }
+    tab name="Keybinds" focus=true{
+        pane {
+          cwd "~/dotfiles/hyprland/.config/hypr/bindings.conf" 
+          }
+    }
+    tab name="Dotfiles" focus=true{
+        pane {
+          cwd "~/dotfiles/" 
+          }
+    }
+    tab name="Omarchy-setup"{
+      pane {
+        cwd "~/Code/omarchy-supplement/" 
+        }
+    }
+    tab name="Shell"{
+      pane {
+        cwd "~" 
+        }
+    }
+  }
