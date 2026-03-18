@@ -10,8 +10,8 @@
       "PxW": 1920,
       "PxH": 1080,
       "Hz": 60,
-      "Scale": 1,
-      "X": 1920,
+      "Scale": 0.99999994,
+      "X": 1937,
       "Y": 0,
       "Active": true,
       "EDIDName": "AOC 24G2W1G4 0x0000D1A5",
@@ -247,8 +247,8 @@
       "MirrorSource": "",
       "MirrorTargets": [],
       "Dragging": false,
-      "DragOffX": 0,
-      "DragOffY": 0
+      "DragOffX": 1605,
+      "DragOffY": 722
     },
     {
       "name": "DP-6",
@@ -260,8 +260,8 @@
       "PxH": 1080,
       "Hz": 60,
       "Scale": 1,
-      "X": 3840,
-      "Y": 0,
+      "X": 3917,
+      "Y": 32,
       "Active": true,
       "EDIDName": "Dell Inc. DELL P2214H 29C2959M4W2S",
       "Modes": [
@@ -336,8 +336,8 @@
       "MirrorSource": "",
       "MirrorTargets": [],
       "Dragging": false,
-      "DragOffX": 0,
-      "DragOffY": 0
+      "DragOffX": 416,
+      "DragOffY": 735
     },
     {
       "name": "HDMI-A-6",
@@ -545,10 +545,10 @@
       "MirrorSource": "",
       "MirrorTargets": [],
       "Dragging": false,
-      "DragOffX": 0,
-      "DragOffY": 0
+      "DragOffX": 1272,
+      "DragOffY": 586
     }
   ],
   "created_at": "2026-03-13T01:14:53.087663946+01:00",
-  "updated_at": "2026-03-13T01:14:53.087664+01:00"
+  "updated_at": "2026-03-18T16:15:26.477733081+01:00"
 }
