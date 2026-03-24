@@ -1,0 +1,42 @@
+layout {
+    default_tab_template {
+        // the default zellij tab-bar and status bar plugins
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        children
+    }
+    tab name="Code" focus=true{
+        pane {
+          cwd "~/Code/ConvergENS/" 
+          command "nvim"
+          }
+    }
+    tab name="Docs"{
+      pane {
+        cwd "~/Nextcloud/Projects/ConvergENS/Docs/" 
+        }
+    }
+    tab name="Local Server"{
+      pane {
+          cwd "~/Code/ConvergENS/" 
+          command "bun"
+          args "run" "dev"
+        }
+    }
+    tab name="User docs"{
+      pane {
+          cwd "~/Code/ConvergENS/docs/" 
+        }
+      pane {
+          cwd "~/Code/ConvergENS/docs/" 
+          command ""
+          args "run" "dev"
+        }
+    }
+    tab name="Shell"{
+      pane {
+        cwd "~/Code/ConvergENS/" 
+        }
+    }
+  }
