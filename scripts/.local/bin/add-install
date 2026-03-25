@@ -1,0 +1,75 @@
+#!/bin/bash
+
+package_name="$1"
+
+# -----------------------------
+# Colors
+# -----------------------------
+RED=$'\e[31m'
+GREEN=$'\e[32m'
+YELLOW=$'\e[33m'
+BLUE=$'\e[34m'
+BOLD=$'\e[1m'
+RESET=$'\e[0m'
+
+info() { echo "${BLUE}${BOLD}==>${RESET} $*"; }
+success() { echo "${GREEN}${BOLD}✔${RESET}  $*"; }
+warn() { echo "${YELLOW}${BOLD}⚠ Warning:${RESET}  $*"; }
+error() { echo "${RED}${BOLD}✖ Error:${RESET}  $*" >&2; }
+
+ask_for_valid_package() {
+  while true; do
+    package_name=$(gum input --placeholder "Enter package name")
+
+    [[ -z "$package_name" ]] && {
+      gum style --foreground 196 "Package name cannot be empty."
+      continue
+    }
+
+    if yay -Si "$package_name" >/dev/null 2>&1; then
+      clear
+      break
+    fi
+
+    gum style --foreground 196 "Package not found in yay. Please try again."
+  done
+}
+
+# If no package was provided, or the provided one does not exist, ask interactively
+if [[ -z "$package_name" ]]; then
+  ask_for_valid_package
+elif ! yay -Si "$package_name" >/dev/null 2>&1; then
+  gum style --foreground 196 "Package '$package_name' not found in yay."
+  ask_for_valid_package
+fi
+
+while true; do
+  program_name=$(gum input --placeholder "Enter program name")
+
+  if [[ -n "$program_name" ]]; then
+    break
+  fi
+
+  gum style --foreground 196 "Program name cannot be empty."
+done
+
+echo "Package name: $package_name"
+echo "Program name: $program_name"
+
+OUTPUT_DIR="$HOME/Code/omarchy-supplement/install"
+OUTPUT_FILE="$OUTPUT_DIR/${program_name}.sh"
+
+mkdir -p "$OUTPUT_DIR"
+
+cat > "$OUTPUT_FILE" <<EOF
+#!/bin/bash
+
+# Install $program_name
+if ! command -v "$package_name" >/dev/null 2>&1; then
+    yay -S --noconfirm --needed "$package_name"
+fi
+EOF
+
+chmod +x "$OUTPUT_FILE"
+
+gum style --foreground 82 "Created $OUTPUT_FILE"
