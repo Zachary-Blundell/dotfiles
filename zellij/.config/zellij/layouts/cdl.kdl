@@ -30,8 +30,8 @@ layout {
         }
       pane {
           cwd "~/Code/ConvergENS/docs/" 
-          command ""
-          args "run" "dev"
+          command "bundle "
+          args "exec" "jekyll" "serve" 
         }
     }
     tab name="Shell"{
