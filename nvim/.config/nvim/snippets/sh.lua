@@ -48,4 +48,23 @@ return {
     i(1, "error"),
     t('" >&2'),
   }),
+  s(
+    "bashcolors",
+    t({
+      "# -----------------------------",
+      "# Colors",
+      "# -----------------------------",
+      "RED=$'\\e[31m'",
+      "GREEN=$'\\e[32m'",
+      "YELLOW=$'\\e[33m'",
+      "BLUE=$'\\e[34m'",
+      "BOLD=$'\\e[1m'",
+      "RESET=$'\\e[0m'",
+      "",
+      'info() { echo "${BLUE}${BOLD}==>${RESET} $*"; }',
+      'success() { echo "${GREEN}${BOLD}✔${RESET}  $*"; }',
+      'warn() { echo "${YELLOW}${BOLD}⚠ Warning:${RESET}  $*"; }',
+      'error() { echo "${RED}${BOLD}✖ Error:${RESET}  $*" >&2; }',
+    })
+  ),
 }
