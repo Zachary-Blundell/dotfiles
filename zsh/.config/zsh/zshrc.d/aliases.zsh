@@ -106,6 +106,8 @@ alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
 # Better versions
+
+alias open='xdg-open'
 alias rm='trash -v'
 alias mkdir='mkdir -p'
 alias ps='ps auxf'
