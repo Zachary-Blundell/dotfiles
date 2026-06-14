@@ -1,0 +1,7 @@
+# -----------------------------------------------------
+# WSL ALIASES
+# -----------------------------------------------------
+
+# copy and past
+alias clip='powershell.exe -noprofile -command "chcp 65001 >\$null; clip.exe"'
+alias past='powershell.exe -noprofile -command Get-Clipboard'
