@@ -23,3 +23,13 @@ keymap("v", ">", ">gv")
 -- Flutter --
 keymap("n", "<leader>r", ":FlutterRestart<CR>")
 keymap("n", "<leader>R", ":FlutterRun<CR>")
+
+-- Ink --
+keymap("n", "<leader>rt", function()
+  --   local time = os.date("%H:%M")
+  local time = vim.fn.strftime("%H:%M")
+  local row = vim.api.nvim_win_get_cursor(0)[1]
+  vim.api.nvim_buf_set_lines(0, row, row, false, { time .. " " })
+  vim.api.nvim_win_set_cursor(0, { row + 1, #time + 1 })
+  vim.cmd("startinsert!")
+end, { desc = "Insert current time on new line below" })
