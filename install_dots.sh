@@ -48,12 +48,12 @@ fi
 
 # ─── Define Package Layers ────────────────────────────────────────────────────
 base=(nvim zellij zsh scripts)
-omarchy=(zsh-omarchy hyprland hyprmon kanata kitty omarchy waybar)
+omarchy=(nvim-omarchy zsh-omarchy hyprland hyprmon kanata kitty omarchy waybar)
 
 declare -A role_packages
 role_packages[laptop]="${omarchy[*]} hypr-laptop"
 role_packages[desktop]="${omarchy[*]} hypr-desktop"
-role_packages[wsl]="zsh-wsl"
+role_packages[wsl]="nvim-wsl zsh-wsl"
 role_packages[android]="zsh-android"
 
 # ─── Remove Conflicting Configs ──────────────────────────────────────────────
