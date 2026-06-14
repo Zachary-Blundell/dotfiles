@@ -77,6 +77,9 @@ for target in "${targets[@]}"; do
 done
 
 # ─── Stow Packages ───────────────────────────────────────────────────────────
+
+cd $HOME/dotfiles
+
 echo "Stowing base packages..."
 for pkg in "${base[@]}"; do
   stow "$pkg"
