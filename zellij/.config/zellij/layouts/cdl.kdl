@@ -12,11 +12,6 @@ layout {
           command "nvim"
           }
     }
-    tab name="Docs"{
-      pane {
-        cwd "~/Nextcloud/Projects/ConvergENS/Docs/" 
-        }
-    }
     tab name="Local Server"{
       pane {
           cwd "~/Code/ConvergENS/" 
@@ -30,7 +25,7 @@ layout {
         }
       pane {
           cwd "~/Code/ConvergENS/docs/" 
-          command "bundle "
+          command "bundle"
           args "exec" "jekyll" "serve" 
         }
     }
