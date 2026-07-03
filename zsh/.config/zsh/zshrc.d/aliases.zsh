@@ -21,6 +21,7 @@ alias goto='nordvpn c'
 ## Edit Configs
 # Edit this .zshrc file
 alias ezsh='goedit $ZDOTDIR/zshrc.d/'
+alias eezsh='goedit $ZDOTDIR/'
 alias rzsh='source $ZDOTDIR/.zshrc'
 ## ssh
 alias essh='goedit $HOME/.ssh/config'

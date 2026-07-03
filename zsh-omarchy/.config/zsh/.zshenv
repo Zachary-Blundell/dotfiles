@@ -75,7 +75,3 @@ export NVM_DIR="$HOME/.config/nvm"
 # bun completions
 [ -s "/home/zaiquiri/.bun/_bun" ] && source "/home/zaiquiri/.bun/_bun"
 
-
-# For hyprmon 
-export HYPRLAND_CONFIG="$HOME/.config/hypr/monitors.conf"
-
