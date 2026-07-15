@@ -115,3 +115,6 @@ fi
 
 # bun completions
 [ -s "/home/zaiquiri/.bun/_bun" ] && source "/home/zaiquiri/.bun/_bun"
+
+# ink
+export INK_LEDGER="$HOME/Nextcloud/Notes/Log"
